@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Brukere">
+    <Key>
+      <PropertyRef Name="Epost" />
+    </Key>
+    <Property Name="Epost" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fornavn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Etternavn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Passord" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Fødselsdato" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Ordrer" Relationship="Self.FK_dbo_Ordrer_dbo_Brukere_BrukereId_Epost" FromRole="Brukere" ToRole="Ordrer" />
+  </EntityType>
+  <EntityType Name="Filmer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Navn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Bilde" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pris" Type="Double" Nullable="false" />
+    <Property Name="Kategorier_KategoriId" Type="Int32" />
+    <NavigationProperty Name="Kategorier" Relationship="Self.FK_dbo_Filmer_dbo_Kategorier_Kategorier_KategoriId" FromRole="Filmer" ToRole="Kategorier" />
+    <NavigationProperty Name="Ordrer" Relationship="Self.FK_dbo_Ordrer_dbo_Filmer_FilmerId_Id" FromRole="Filmer" ToRole="Ordrer" />
+  </EntityType>
+  <EntityType Name="Kategorier">
+    <Key>
+      <PropertyRef Name="KategoriId" />
+    </Key>
+    <Property Name="KategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KatgoriNavn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Filmer" Relationship="Self.FK_dbo_Filmer_dbo_Kategorier_Kategorier_KategoriId" FromRole="Kategorier" ToRole="Filmer" />
+  </EntityType>
+  <EntityType Name="Ordrer">
+    <Key>
+      <PropertyRef Name="OrdrerId" />
+    </Key>
+    <Property Name="OrdrerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrdreDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BrukereId_Epost" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="FilmerId_Id" Type="Int32" />
+    <NavigationProperty Name="Brukere" Relationship="Self.FK_dbo_Ordrer_dbo_Brukere_BrukereId_Epost" FromRole="Ordrer" ToRole="Brukere" />
+    <NavigationProperty Name="Filmer" Relationship="Self.FK_dbo_Ordrer_dbo_Filmer_FilmerId_Id" FromRole="Ordrer" ToRole="Filmer" />
+  </EntityType>
+  <Association Name="FK_dbo_Ordrer_dbo_Brukere_BrukereId_Epost">
+    <End Role="Brukere" Type="Self.Brukere" Multiplicity="0..1" />
+    <End Role="Ordrer" Type="Self.Ordrer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brukere">
+        <PropertyRef Name="Epost" />
+      </Principal>
+      <Dependent Role="Ordrer">
+        <PropertyRef Name="BrukereId_Epost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Filmer_dbo_Kategorier_Kategorier_KategoriId">
+    <End Role="Kategorier" Type="Self.Kategorier" Multiplicity="0..1" />
+    <End Role="Filmer" Type="Self.Filmer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategorier">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Filmer">
+        <PropertyRef Name="Kategorier_KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Ordrer_dbo_Filmer_FilmerId_Id">
+    <End Role="Filmer" Type="Self.Filmer" Multiplicity="0..1" />
+    <End Role="Ordrer" Type="Self.Ordrer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filmer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ordrer">
+        <PropertyRef Name="FilmerId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Brukere" EntityType="Self.Brukere" />
+    <EntitySet Name="Filmer" EntityType="Self.Filmer" />
+    <EntitySet Name="Kategorier" EntityType="Self.Kategorier" />
+    <EntitySet Name="Ordrer" EntityType="Self.Ordrer" />
+    <AssociationSet Name="FK_dbo_Ordrer_dbo_Brukere_BrukereId_Epost" Association="Self.FK_dbo_Ordrer_dbo_Brukere_BrukereId_Epost">
+      <End Role="Brukere" EntitySet="Brukere" />
+      <End Role="Ordrer" EntitySet="Ordrer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Filmer_dbo_Kategorier_Kategorier_KategoriId" Association="Self.FK_dbo_Filmer_dbo_Kategorier_Kategorier_KategoriId">
+      <End Role="Kategorier" EntitySet="Kategorier" />
+      <End Role="Filmer" EntitySet="Filmer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Ordrer_dbo_Filmer_FilmerId_Id" Association="Self.FK_dbo_Ordrer_dbo_Filmer_FilmerId_Id">
+      <End Role="Filmer" EntitySet="Filmer" />
+      <End Role="Ordrer" EntitySet="Ordrer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

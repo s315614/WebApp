@@ -1,0 +1,90 @@
+﻿@model Gruppeoppgave1.Models.Bruker
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<header>
+    <link rel="stylesheet" type="text/css" href="~/Content/Login.css">
+</header>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black; font-size:18px">
+    <div class="container">
+        <div class="navbar-header">
+            <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="~/Home/Index" class="navbar-brand brand"><i class="fa fa-codepen"></i><img src="~/Content/Image/Logo.png" alt="Logo" style="width:100px;height:30px;"></a>
+        </div>
+        <div id="navbar-collapse-02" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="~/Home/Registry"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li class="active"><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</div>
+
+<!--
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+<div class="container">
+    <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+        if (ViewBag.registrert == true)
+        {
+            <p style="color:blue">Du er nå registrert! Vennligst fyll under for å logge inn!</p>
+        }
+        else
+        {
+            <p></p>
+        }
+
+
+            <form class="form-signin">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <span id="reauth-email" class="reauth-email"></span>
+                <div class="control-group">
+                    <input type="text" name="Epost" class="form-control" placeholder="Epost">
+                    @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
+                </div>
+                <div style="padding:2%;"></div>
+                <div class="control-group">
+                    <input type="password" name="Passord" class="form-control" placeholder="Passord">
+                    @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                @if (!ViewBag.feilBrukernavnPassord)
+                {
+                    <p></p>
+                }
+                else
+                {
+                    <p style="color:red">Feil brukernavn og passord</p>
+                }
+
+            </form><!-- /form -->
+
+        }
+
+    </div><!-- /card-container -->
+</div><!-- /container -->

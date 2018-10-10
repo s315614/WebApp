@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Brukere">
+    <Key>
+      <PropertyRef Name="Epost" />
+    </Key>
+    <Property Name="Epost" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Fornavn" Type="nvarchar(max)" />
+    <Property Name="Etternavn" Type="nvarchar(max)" />
+    <Property Name="Adresse" Type="nvarchar(max)" />
+    <Property Name="Passord" Type="nvarchar(max)" />
+    <Property Name="Telefon" Type="nvarchar(max)" />
+    <Property Name="Fødselsdato" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Filmer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Navn" Type="nvarchar(max)" />
+    <Property Name="Bilde" Type="varbinary(max)" />
+    <Property Name="Beskrivelse" Type="nvarchar(max)" />
+    <Property Name="Pris" Type="float" Nullable="false" />
+    <Property Name="Kategorier_KategoriId" Type="int" />
+  </EntityType>
+  <EntityType Name="Kategorier">
+    <Key>
+      <PropertyRef Name="KategoriId" />
+    </Key>
+    <Property Name="KategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KatgoriNavn" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Ordrer">
+    <Key>
+      <PropertyRef Name="OrdrerId" />
+    </Key>
+    <Property Name="OrdrerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrdreDate" Type="nvarchar(max)" />
+    <Property Name="BrukereId_Epost" Type="nvarchar" MaxLength="128" />
+    <Property Name="FilmerId_Id" Type="int" />
+  </EntityType>
+  <Association Name="FK_dbo_Filmer_dbo_Kategorier_Kategorier_KategoriId">
+    <End Role="Kategorier" Type="Self.Kategorier" Multiplicity="0..1" />
+    <End Role="Filmer" Type="Self.Filmer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategorier">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Filmer">
+        <PropertyRef Name="Kategorier_KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Ordrer_dbo_Brukere_BrukereId_Epost">
+    <End Role="Brukere" Type="Self.Brukere" Multiplicity="0..1" />
+    <End Role="Ordrer" Type="Self.Ordrer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brukere">
+        <PropertyRef Name="Epost" />
+      </Principal>
+      <Dependent Role="Ordrer">
+        <PropertyRef Name="BrukereId_Epost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Ordrer_dbo_Filmer_FilmerId_Id">
+    <End Role="Filmer" Type="Self.Filmer" Multiplicity="0..1" />
+    <End Role="Ordrer" Type="Self.Ordrer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filmer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ordrer">
+        <PropertyRef Name="FilmerId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="Brukere" EntityType="Self.Brukere" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Filmer" EntityType="Self.Filmer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategorier" EntityType="Self.Kategorier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ordrer" EntityType="Self.Ordrer" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_Filmer_dbo_Kategorier_Kategorier_KategoriId" Association="Self.FK_dbo_Filmer_dbo_Kategorier_Kategorier_KategoriId">
+      <End Role="Kategorier" EntitySet="Kategorier" />
+      <End Role="Filmer" EntitySet="Filmer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Ordrer_dbo_Brukere_BrukereId_Epost" Association="Self.FK_dbo_Ordrer_dbo_Brukere_BrukereId_Epost">
+      <End Role="Brukere" EntitySet="Brukere" />
+      <End Role="Ordrer" EntitySet="Ordrer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Ordrer_dbo_Filmer_FilmerId_Id" Association="Self.FK_dbo_Ordrer_dbo_Filmer_FilmerId_Id">
+      <End Role="Filmer" EntitySet="Filmer" />
+      <End Role="Ordrer" EntitySet="Ordrer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

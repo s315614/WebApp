@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities1">
+    <EntitySetMapping Name="Brukere">
+      <EntityTypeMapping TypeName="DatabaseModel.Brukere">
+        <MappingFragment StoreEntitySet="Brukere">
+          <ScalarProperty Name="Epost" ColumnName="Epost" />
+          <ScalarProperty Name="Fornavn" ColumnName="Fornavn" />
+          <ScalarProperty Name="Etternavn" ColumnName="Etternavn" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Passord" ColumnName="Passord" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Fødselsdato" ColumnName="Fødselsdato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Filmer">
+      <EntityTypeMapping TypeName="DatabaseModel.Filmer">
+        <MappingFragment StoreEntitySet="Filmer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="Bilde" ColumnName="Bilde" />
+          <ScalarProperty Name="Beskrivelse" ColumnName="Beskrivelse" />
+          <ScalarProperty Name="Pris" ColumnName="Pris" />
+          <ScalarProperty Name="Kategorier_KategoriId" ColumnName="Kategorier_KategoriId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategorier">
+      <EntityTypeMapping TypeName="DatabaseModel.Kategorier">
+        <MappingFragment StoreEntitySet="Kategorier">
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+          <ScalarProperty Name="KatgoriNavn" ColumnName="KatgoriNavn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ordrer">
+      <EntityTypeMapping TypeName="DatabaseModel.Ordrer">
+        <MappingFragment StoreEntitySet="Ordrer">
+          <ScalarProperty Name="OrdrerId" ColumnName="OrdrerId" />
+          <ScalarProperty Name="OrdreDate" ColumnName="OrdreDate" />
+          <ScalarProperty Name="BrukereId_Epost" ColumnName="BrukereId_Epost" />
+          <ScalarProperty Name="FilmerId_Id" ColumnName="FilmerId_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,77 @@
+﻿@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <form class="form-horizontal">
+        <fieldset>
+            <div id="legend">
+                <h2>Register</h2>
+            </div>
+            <div class="control-group">
+                <!-- Fornavn-->
+                <label class="control-label">Fornavn</label>
+
+                <input type="text" name="Fornavn" placeholder="" class="form-control">
+
+
+            </div>
+            <div class="control-group">
+                <!-- Etternavn -->
+                <label class="control-label">Etternavn</label>
+
+                <input type="text" name="Etternavn" placeholder="" class="form-control">
+
+
+            </div>
+            <div class="control-group">
+                <!-- Adresse -->
+                <label class="control-label">Adresse</label>
+
+                <input type="text" name="Adresse" placeholder="" class="form-control">
+
+
+            </div>
+            <div class="control-group">
+                <!-- Telefon -->
+                <label class="control-label">Telefon</label>
+
+                <input type="text" name="Telefon" placeholder="" class="form-control">
+
+
+            </div>
+
+
+            <div class="control-group">
+                <!-- Fødselsdato -->
+                <label class="control-label">Fødselsdato</label>
+
+                <input type="text" name="Fødselsdato" placeholder="" class="form-control">
+
+
+            </div>
+            <div class="control-group">
+                <!-- E-mail -->
+                <label class="control-label">E-mail</label>
+
+                <input type="email" id="Email" name="Email" placeholder="" class="form-control">
+
+
+            </div>
+            <div class="control-group">
+                <!-- Password-->
+                <label class="control-label">Password</label>
+
+                <input type="password" name="Passord" placeholder="" class="form-control">
+                <p class="help-block">Password should be at least 4 characters</p>
+
+            </div>
+
+            <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                    <input type="submit" class="btn btn-success" value="Registrate" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+}
