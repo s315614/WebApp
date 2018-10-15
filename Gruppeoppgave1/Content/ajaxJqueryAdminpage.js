@@ -118,7 +118,18 @@
         $("#visTabell").html("");
 
         var htmlRowTop = '';
-         
+
+        htmlRowTop += '<form>';
+        htmlRowTop += '<tr>';
+        htmlRowTop += '<td><input type="text" name="Id"></td>';
+        htmlRowTop += '<td><input type="text" name="Navn"></td>';
+        htmlRowTop += '<td><input type="text" name="Beskrivelse"></td>';
+        htmlRowTop += '<td><input type="text" name="Pris"></td>';
+        htmlRowTop += '<td><input type="text" name="KategoriNavn"></td>';
+        htmlRowTop += '<td><button id="update" class="btn btn-success">Add</button></td>';
+        htmlRowTop += '</tr>';
+        htmlRowTop += '</form>';
+
         htmlRowTop +='<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
         htmlRowTop += '<tr><th scope="col">FilmId</th><th scope="col">Navn</th><th scope="col">Beskrivelse</th>';
         htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th><th scope="col"></th>';
