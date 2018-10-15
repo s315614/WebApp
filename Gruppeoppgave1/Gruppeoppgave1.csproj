@@ -100,6 +100,7 @@
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\ajaxJqueryAdminpage.js" />
     <Content Include="Content\ajaxJqueryIndex.js" />
     <Content Include="Content\ajaxJqueryMainpage.js" />
     <Content Include="Content\bootstrap.css" />
@@ -191,6 +192,7 @@
     <Content Include="Views\Home\MainPage.cshtml" />
     <Content Include="Views\Home\Payment.cshtml" />
     <Content Include="Views\Home\ListProfile.cshtml" />
+    <Content Include="Views\Home\AdminPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

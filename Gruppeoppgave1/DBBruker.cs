@@ -8,7 +8,27 @@ namespace Gruppeoppgave1
 {
     public class DBBruker
     {
-     
+
+        public List<Bruker> alleBrukere()
+        {
+            using (var db = new DBContext())
+            {
+                List<Bruker> alleBrukere = db.Brukere.Select(k => new Bruker
+                {
+                    Epost =  k.Epost,
+                    Fornavn = k.Fornavn,
+                    Etternavn = k.Etternavn,
+                    Adresse = k.Adresse,
+                    Fødselsdato = k.Fødselsdato,
+                    Passord = "Test passord",
+                    Telefon = k.Telefon
+ 
+                }).ToList();
+
+                return alleBrukere;
+            }
+        }
+
         public bool lagreBruker(Bruker innBruker)
         {
 
@@ -70,6 +90,9 @@ namespace Gruppeoppgave1
             utData = algoritme.ComputeHash(innData);
             return utData;
         }
+
+
+ 
 
 
 

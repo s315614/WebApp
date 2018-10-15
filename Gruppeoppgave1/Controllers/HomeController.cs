@@ -210,7 +210,13 @@ namespace Gruppeoppgave1.Controllers
             return RedirectToAction("MainPage");
         }
 
-    
+        public ActionResult AdminPage()
+        {
+            return View();
+
+        }
+
+
         public ActionResult Loggut()
         {
             Session["LoggetInn"] = false;
@@ -261,6 +267,32 @@ namespace Gruppeoppgave1.Controllers
             var jsonSerializer = new JavaScriptSerializer();
             jsonSerializer.MaxJsonLength = Int32.MaxValue;
             string json = jsonSerializer.Serialize(enFilm);
+            return json;
+        }
+
+        public string hentAlleFilmer()
+        {
+            var db = new DBFilmer();
+            List<Film> alleFilmer = db.alleFilmer();
+
+            if (alleFilmer == null) return null;
+
+            var jsonSerializer = new JavaScriptSerializer();
+            jsonSerializer.MaxJsonLength = Int32.MaxValue;
+            string json = jsonSerializer.Serialize(alleFilmer);
+            return json;
+        }
+
+        public string hentAlleBrukere()
+        {
+            var db = new DBBruker();
+            List<Bruker> alleBrukere = db.alleBrukere();
+
+            if (alleBrukere == null) return null;
+
+            var jsonSerializer = new JavaScriptSerializer();
+            jsonSerializer.MaxJsonLength = Int32.MaxValue;
+            string json = jsonSerializer.Serialize(alleBrukere);
             return json;
         }
 
