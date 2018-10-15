@@ -105,6 +105,14 @@ namespace Gruppeoppgave1.Controllers
 
         }
 
+        public string register(Film innKunde)
+        {
+            var db = new DBFilmer();
+            db.lagreFilm(innKunde);
+            var jsonSerializer = new JavaScriptSerializer();
+            return jsonSerializer.Serialize("OK");
+        }
+
         public ActionResult MainPage()
         {
             string epost = (string)Session["BrukerId"];

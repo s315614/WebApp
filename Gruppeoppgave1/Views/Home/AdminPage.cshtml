@@ -5,6 +5,7 @@
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Content/ajaxJqueryAdminpage.js"></script>
+<script src="~/Content/AdminBruker.js"></script>
 
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black; font-size:18px">
     <div class="container">
@@ -56,12 +57,12 @@
             <form action="">
                 <table>
                     <tr>
-                        <td><input type="text" name="Navn" placeholder="Navn"></td>
-                        <td><input type="text" name="Beskrivelse" placeholder="Beskrivelse"></td>
-                        <td><input type="text" name="Pris" placeholder="Pris"></td>
-                        <td><input type="text" name="KategoriNavn" placeholder="Kategori"></td>
-                        <td><input type="file" name="pic" placeholder="Bilde" accept="image/*"></td>
-                        <td><button id="update" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
+                        <td><input id="navn" type="text" name="Navn" placeholder="Navn"></td>
+                        <td><input id="beskrivelse" type="text" name="Beskrivelse" placeholder="Beskrivelse"></td>
+                        <td><input id="pris" type="text" name="Pris" placeholder="Pris"></td>
+                        <td><input id="kategorinavn" type="text" name="KategoriNavn" placeholder="Kategori"></td>
+                        <td><input id="bilde" type="file" name="pic" placeholder="Bilde" accept="image/*"></td>
+                        <td><button id="registrer" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
                     </tr>
                 </table>
 
@@ -70,7 +71,7 @@
         <div id="visTabell"></div>
     </div>
     <div id="menu1" class="tab-pane fade">
-        <h3>Brukere</h3>
+        <div id="visTabellBruker"></div>
     </div>
     <div id="menu2" class="tab-pane fade">
         <h3>Ordre</h3>

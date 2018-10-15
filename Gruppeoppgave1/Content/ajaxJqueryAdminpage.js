@@ -35,6 +35,35 @@
         });
     });
 
+    $("#registrer").click(function () {
+
+        // bygg et js objekt fra input feltene
+        var jsInn = {
+            Navn: $("#navn").val(),
+            Beskrivelse: $("#beskrivelse").val(),
+            Pris: $("#pris").val(),
+            Kategorier: $("#kategorinavn").val(),
+            Bilde: $("#bilde").val()
+        }
+
+        $.ajax({
+            url: '/Home/register',
+            type: 'POST',
+            data: JSON.stringify(jsInn),
+            contentType: "application/json;charset=utf-8",
+            success: function (ok) {
+                // kunne ha feilhåndtert evt. feil i registreringen her
+                window.location.reload();
+                // reload av vinduet må sje her altså etter at kallet har returnert
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    })
+
+
+
 
     function visInfoDynamisk(film) {
 
