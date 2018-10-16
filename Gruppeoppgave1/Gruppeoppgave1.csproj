@@ -101,6 +101,7 @@
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="Content\AdminBruker.js" />
+    <Content Include="Content\AdminOrdre.js" />
     <Content Include="Content\ajaxJqueryAdminpage.js" />
     <Content Include="Content\ajaxJqueryIndex.js" />
     <Content Include="Content\ajaxJqueryMainpage.js" />

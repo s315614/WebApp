@@ -303,6 +303,18 @@ namespace Gruppeoppgave1.Controllers
             string json = jsonSerializer.Serialize(alleBrukere);
             return json;
         }
+        public string hentAlleOrdre()
+        {
+            var db = new DBOrder();
+            List<Order> alleOrdre = db.alleOrdre();
+
+            if (alleOrdre == null) return null;
+
+            var jsonSerializer = new JavaScriptSerializer();
+            jsonSerializer.MaxJsonLength = Int32.MaxValue;
+            string json = jsonSerializer.Serialize(alleOrdre);
+            return json;
+        }
 
 
         public string convertByteToImage(Byte[] image)

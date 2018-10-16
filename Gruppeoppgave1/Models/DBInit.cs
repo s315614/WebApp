@@ -25,6 +25,7 @@ namespace Gruppeoppgave1.Models
                 Telefon = "95234352",
                 Passord = passord
             };
+
             
 
             var nyKategori1 = new Kategorier()
@@ -340,6 +341,14 @@ namespace Gruppeoppgave1.Models
                 Kategorier = nyKategori4
             };
 
+            var nyOrdre = new Ordrer()
+            {
+                OrdreDate = "20-12-2017",
+                BrukereId = nyBruker,
+                FilmerId = nyFilm
+            };
+            var ordrelist = new List<Ordrer>();
+            ordrelist.Add(nyOrdre);
 
             var kategoriList = new List<Kategorier>();
             kategoriList.Add(nyKategori1);
@@ -387,6 +396,8 @@ namespace Gruppeoppgave1.Models
             context.Kategorier.AddRange(kategoriList);
 
             context.Filmer.AddRange(filmList);
+
+            context.Ordrer.AddRange(ordrelist);
 
             base.Seed(context);
         }
