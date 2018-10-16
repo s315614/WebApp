@@ -20,7 +20,7 @@ namespace Gruppeoppgave1
                     Etternavn = k.Etternavn,
                     Adresse = k.Adresse,
                     Fødselsdato = k.Fødselsdato,
-                    Passord = "Test passord",
+                    PassordByte = k.Passord,
                     Telefon = k.Telefon
  
                 }).ToList();

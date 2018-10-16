@@ -46,7 +46,7 @@
             htmlRowTop += '<td>' + item.Fornavn + '</td>';
             htmlRowTop += '<td>' + item.Etternavn + '</td>';
             htmlRowTop += '<td>' + item.Adresse + '</td>';
-            htmlRowTop += '<td>' + item.Passord + '</td>';
+            htmlRowTop += '<td>' + item.PassordByte + '</td>';
             htmlRowTop += '<td>' + item.Telefon + '</td>';
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';

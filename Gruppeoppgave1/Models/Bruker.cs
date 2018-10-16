@@ -42,5 +42,6 @@ namespace Gruppeoppgave1.Models
         //[MinimumAge(18)]
 
         public string Fødselsdato { get; set; }
+        public byte[] PassordByte { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Gruppeoppgave1
                     OrdreDate = k.OrdreDate,
                     BrukerId = k.BrukereId.Epost,
                     FilmId = k.FilmerId.Id,
-
+                    FilmNavn = k.FilmerId.Navn
 
                 }).ToList();
 
@@ -36,9 +36,9 @@ namespace Gruppeoppgave1
                     OrdreDate = n.OrdreDate,
                     FilmId = n.FilmerId.Id,
                     BrukerId = n.BrukereId.Epost,
-                  //  FilmNavn = n.FilmerId.Navn,
-                 //   FilmKategori = n.FilmerId.Kategorier.KatgoriNavn,
-                 //   FilmPris = n.FilmerId.Pris
+                    FilmNavn = n.FilmerId.Navn,
+                    FilmKategori = n.FilmerId.Kategorier.KatgoriNavn,
+                    FilmPris = n.FilmerId.Pris
 
                 }).ToList();
 
