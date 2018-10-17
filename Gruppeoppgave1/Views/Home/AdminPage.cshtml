@@ -8,6 +8,26 @@
 <script src="~/Content/AdminBruker.js"></script> 
 <script src="~/Content/AdminOrdre.js"></script>
 <script src="~/Content/Admin.js"></script>
+<style>
+    input[id=searchBox] {
+        width: 75px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: white;
+        background-image: url('searchicon.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+       // padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+        input[id=searchBox]:focus {
+            width: 100%;
+        }
+</style>
 
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black; font-size:18px">
     <div class="container">
@@ -59,12 +79,13 @@
             <form action="">
                 <table>
                     <tr>
+                        <td><input id="searchBox" type="text" name="search" placeholder="Search.."></td>
                         <td><input id="navn" type="text" name="Navn" placeholder="Navn"></td>
                         <td><input id="beskrivelse" type="text" name="Beskrivelse" placeholder="Beskrivelse"></td>
                         <td><input id="pris" type="text" name="Pris" placeholder="Pris"></td>
                         <td><input id="kategorinavn" type="text" name="KategoriNavn" placeholder="Kategori"></td>
                         <!--<td><input id="bilde" type="file" name="pic" placeholder="Bilde" accept="image/*"></td>-->
-                        <td><input id="fileInput" type="file" name="pic" placeholder="Bilde" accept="image/*"></td>
+                        <td><input id="fileInput" type="file" style="width:150px; height:100%" name="pic" placeholder="Bilde" accept="image/*"></td>
                         <td><button id="registrer" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
                     </tr>
                 </table>
