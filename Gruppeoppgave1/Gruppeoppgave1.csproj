@@ -100,6 +100,7 @@
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Admin.js" />
     <Content Include="Content\AdminBruker.js" />
     <Content Include="Content\AdminOrdre.js" />
     <Content Include="Content\ajaxJqueryAdminpage.js" />

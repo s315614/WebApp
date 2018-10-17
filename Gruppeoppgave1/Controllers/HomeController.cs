@@ -303,6 +303,18 @@ namespace Gruppeoppgave1.Controllers
             string json = jsonSerializer.Serialize(alleBrukere);
             return json;
         }
+        public string hentAlleAdminer()
+        {
+            var db = new DBAdminer();
+            List<Admin> alleAdminer = db.alleAdminer();
+
+            if (alleAdminer == null) return null;
+
+            var jsonSerializer = new JavaScriptSerializer();
+            jsonSerializer.MaxJsonLength = Int32.MaxValue;
+            string json = jsonSerializer.Serialize(alleAdminer);
+            return json;
+        }
         public string hentAlleOrdre()
         {
             var db = new DBOrder();
