@@ -69,6 +69,13 @@ namespace Gruppeoppgave1.Models
 
     }
 
+    public class Adminer
+    {
+        [Key]
+        public string Navn { get; set; }
+        public byte[] Passord { get; set; }
+    }
+
     public class DBContext : DbContext
     {
         public DBContext() :
@@ -83,6 +90,7 @@ namespace Gruppeoppgave1.Models
         public DbSet<Kategorier> Kategorier { get; set; }
 
         public DbSet<Ordrer> Ordrer { get; set; }
+        public DbSet<Adminer> Adminer { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

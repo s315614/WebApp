@@ -25,8 +25,14 @@ namespace Gruppeoppgave1.Models
                 Telefon = "95234352",
                 Passord = passord
             };
+            byte[] passordAdmin = lagHash("123456");
+            var nyAdmin = new Adminer()
+            {
+               
+                Navn = "Tommy Hilfigure",
+                Passord = passordAdmin
+            };
 
-            
 
             var nyKategori1 = new Kategorier()
             {
@@ -349,6 +355,8 @@ namespace Gruppeoppgave1.Models
             };
             var ordrelist = new List<Ordrer>();
             ordrelist.Add(nyOrdre);
+            var adminlist = new List<Adminer>();
+            adminlist.Add(nyAdmin);
 
             var kategoriList = new List<Kategorier>();
             kategoriList.Add(nyKategori1);
@@ -398,6 +406,7 @@ namespace Gruppeoppgave1.Models
             context.Filmer.AddRange(filmList);
 
             context.Ordrer.AddRange(ordrelist);
+            context.Adminer.AddRange(adminlist);
 
             base.Seed(context);
         }

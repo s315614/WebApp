@@ -163,6 +163,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DBAdminer.cs" />
     <Compile Include="DBBruker.cs" />
     <Compile Include="DBFilmer.cs" />
     <Compile Include="DBKategori.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Bruker.cs" />
     <Compile Include="Models\DBInit.cs" />
     <Compile Include="Models\Film.cs" />
