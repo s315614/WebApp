@@ -36,13 +36,16 @@ namespace Gruppeoppgave1
                 try
                 {
                     var nyFilmRad = new Filmer();
+                    var KategoriEtterId = db.Kategorier.Find(lagreFilm.KategoriId);
+
 
                     nyFilmRad.Navn = lagreFilm.Navn;
                     nyFilmRad.Bilde = lagreFilm.Bilde;
 
                     nyFilmRad.Beskrivelse = lagreFilm.Beskrivelse;
                     nyFilmRad.Pris = lagreFilm.Pris;
-     
+                    nyFilmRad.Kategorier = KategoriEtterId;
+
 
                     db.Filmer.Add(nyFilmRad);
                     db.SaveChanges();
