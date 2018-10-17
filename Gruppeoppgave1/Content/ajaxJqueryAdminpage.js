@@ -13,7 +13,7 @@
         }
     });
     */
-    alert("Trykk på (Filmer) for å liste ut filmene! Husk og vent i noen sekunder før listene vises");
+    
 
     // opprett en hendelse på dropdown-listen når siden lastes
 
@@ -42,8 +42,9 @@
             Navn: $("#navn").val(),
             Beskrivelse: $("#beskrivelse").val(),
             Pris: $("#pris").val(),
-            Kategorier: $("#kategorinavn").val(),
-            Bilde: $("#bilde").val()
+            KategoriId: $("#kategorinavn").val(),
+            //BildeTekst: $("#bilde").val()
+            //BildeTekst: "Hei",
         }
 
         $.ajax({

@@ -16,6 +16,7 @@ namespace Gruppeoppgave1.Models
         public string Beskrivelse { get; set; }
         public double Pris { get; set; }
         public string KategoriNavn { get; set; }
+        public int KategoriId { get; set; }
 
     }
 }
