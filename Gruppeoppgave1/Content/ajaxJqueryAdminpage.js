@@ -73,7 +73,7 @@
                 visInfoDynamisk(film);
             },
             error: function (x, y, z) {
-                window.location.replace("/Home/AdminPage");
+                //window.location.replace("/Home/AdminPage");
             }
         });
     });
@@ -82,7 +82,7 @@
     function visInfoDynamisk(film) {
 
         $("#visTabell").html("");
-
+        x
         var htmlRowTop = '';
 
         htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
@@ -91,7 +91,7 @@
         htmlRowTop += '</tr></thead><tbody>';
 
 
-        $.each(filmer, function (i, item) {
+        $.each(film, function (i, item) {
 
 
             htmlRowTop += '<tr>';
