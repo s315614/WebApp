@@ -82,7 +82,7 @@
     function visInfoDynamisk(film) {
 
         $("#visTabell").html("");
-        x
+        
         var htmlRowTop = '';
 
         htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';

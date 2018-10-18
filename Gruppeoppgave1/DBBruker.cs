@@ -28,7 +28,30 @@ namespace Gruppeoppgave1
                 return alleBrukere;
             }
         }
+        public List<Bruker> hentBrukerInnhold(string Epost)
+        {
+            using (var db = new DBContext())
+            {
 
+                List<Bruker> hentetBrukere = db.Brukere.Where(k => k.Fornavn.Contains(Epost)).Select(n => new Bruker
+                {
+                    Epost = n.Epost,
+                    Fornavn = n.Fornavn,
+                    Etternavn = n.Etternavn,
+                    Adresse = n.Adresse,
+                    PassordByte = n.Passord,    //check if it goes
+                    Telefon = n.Telefon,
+                    Fødselsdato = n.Fødselsdato
+
+                }).ToList();
+
+                if (hentetBrukere.Count < 1)
+                {
+                    return null;
+                }
+                return hentetBrukere;
+            }
+        }
         public bool lagreBruker(Bruker innBruker)
         {
 

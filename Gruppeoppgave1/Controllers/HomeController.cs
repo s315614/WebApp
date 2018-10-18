@@ -112,6 +112,13 @@ namespace Gruppeoppgave1.Controllers
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
+        public string registerbruker(Bruker innBruker)
+        {
+            var db = new DBBruker();
+            db.lagreBruker(innBruker);
+            var jsonSerializer = new JavaScriptSerializer();
+            return jsonSerializer.Serialize("OK");
+        }
 
         public ActionResult MainPage()
         {
@@ -275,6 +282,23 @@ namespace Gruppeoppgave1.Controllers
             var jsonSerializer = new JavaScriptSerializer();
             jsonSerializer.MaxJsonLength = Int32.MaxValue;
             string json = jsonSerializer.Serialize(enFilm);
+            return json;
+        }
+        public string hentBrukerInneholder(string Epost)
+        {
+            var db = new DBBruker();
+
+            List<Bruker> enBruker = db.hentBrukerInnhold(Epost);
+
+            if (enBruker == null)
+            {
+                return null;
+            }
+
+            
+            var jsonSerializer = new JavaScriptSerializer();
+            jsonSerializer.MaxJsonLength = Int32.MaxValue;
+            string json = jsonSerializer.Serialize(enBruker);
             return json;
         }
 

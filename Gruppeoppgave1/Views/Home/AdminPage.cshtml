@@ -24,7 +24,7 @@
     }
 
         input[id=searchBox]:focus {
-            width: 100%;
+           width: 100%;
         }
 </style>
 
@@ -75,25 +75,47 @@
 <div class="tab-content">
     <div id="home" class="tab-pane fade">
         <div>
-            <form action="">
+            
                 <table>
                     <tr>
                         <td><input id="searchBox" type="text" name="search" placeholder="Search.."></td>
-                        <td><input id="navn" type="text" name="Navn" placeholder="Navn"></td>
-                        <td><input id="beskrivelse" type="text" name="Beskrivelse" placeholder="Beskrivelse"></td>
-                        <td><input id="pris" type="text" name="Pris" placeholder="Pris"></td>
-                        <td><input id="kategorinavn" type="text" name="KategoriNavn" placeholder="Kategori"></td>
-                        <!--<td><input id="bilde" type="file" name="pic" placeholder="Bilde" accept="image/*"></td>-->
-                        <td><input id="fileInput" type="file" style="width:150px; height:100%" name="pic" placeholder="Bilde" accept="image/*"></td>
-                        <td><button id="registrer" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
+                        <form action="">
+                            <td><input id="navn" type="text" name="Navn" placeholder="Navn"></td>
+                            <td><input id="beskrivelse" type="text" name="Beskrivelse" placeholder="Beskrivelse"></td>
+                            <td><input id="pris" type="text" name="Pris" placeholder="Pris"></td>
+                            <td><input id="kategorinavn" type="text" name="KategoriNavn" placeholder="Kategori"></td>
+                            <!--<td><input id="bilde" type="file" name="pic" placeholder="Bilde" accept="image/*"></td>-->
+                            <td><input id="fileInput" type="file" style="width:150px; height:100%" name="pic" placeholder="Bilde" accept="image/*"></td>
+                            <td><button id="registrer" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
+                        </form>
                     </tr>
                 </table>
 
-            </form>
+           
         </div>
         <div id="visTabell"></div>
     </div>
     <div id="menu1" class="tab-pane fade">
+        <div>
+            
+                <table>
+                    <tr>
+                        <td><input id="searchBox1" type="text" name="søk.." placeholder="Search.."></td>
+                        <form action="">
+                            <td><input id="epost" style="width:130px;" type="text" name="Epost" placeholder="Epost"></td>
+                            <td><input id="fornavn" style="width:130px;" type="text" name="Fornavn" placeholder="Fornavn"></td>
+                            <td><input id="etternavn" style="width:130px;" type="text" name="Etternavn" placeholder="Etternavn"></td>
+                            <td><input id="adresse" style="width:130px;" type="text" name="Adresse" placeholder="Adresse"></td>
+                            <td><input id="passord" style="width:130px;" type="text" name="Passord" placeholder="Passord"></td>
+                            <td><input id="telefon" style="width:130px;" type="number" name="Telefon" placeholder="Telefon"></td>
+                            <td><input id="fødselsdato" style="width:130px;" type="date" name="Fødselsdato" placeholder="Fødselsdato"></td>
+                            <td><button id="add" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
+                        </form>
+                    </tr>
+                </table>
+
+           
+        </div>
         <div id="visTabellBruker"></div>
     </div>
     <div id="menu2" class="tab-pane fade">
