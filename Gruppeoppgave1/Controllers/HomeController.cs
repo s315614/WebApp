@@ -71,6 +71,12 @@ namespace Gruppeoppgave1.Controllers
                 Session["BrukerId"] = innBruker.Epost;
                 return RedirectToAction("MainPage", "Home");
             }
+            if (Admin_i_DB(innBruker))
+            {
+                Session["LoggetInn"] = true;
+                
+                return RedirectToAction("AdminPage", "Home");
+            }
 
             Session["LoggetInn"] = false;
             ViewBag.feilBrukernavnPassord = true;
@@ -240,9 +246,29 @@ namespace Gruppeoppgave1.Controllers
 
             return RedirectToAction("Index");
         }
+        private static bool Admin_i_DB(Bruker innBruker)
+        {
+            using (var db = new DBContext())
+            {
+                byte[] passord = lagHash(innBruker.Passord);
 
 
-            private static bool Bruker_i_DB(Bruker innBruker)
+                Adminer funnetAdmin = db.Adminer.FirstOrDefault(b => b.Navn == innBruker.Epost && b.Passord == passord);
+
+
+                if (funnetAdmin == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+        }
+
+        private static bool Bruker_i_DB(Bruker innBruker)
         {
             using (var db = new DBContext())
             {
