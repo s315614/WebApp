@@ -386,7 +386,23 @@ namespace Gruppeoppgave1.Controllers
 
             return imgSrc;
         }
+        public string hentAlleFilmNavn()
+        {
+            var db = new DBFilmer();
+            List<Film> alleFilmer = db.alleFilmer();
+            var alleNavn = new List<jsFilm>();
+            foreach (Film k in alleFilmer)
+            {
+                var ettNavn = new jsFilm();
+                ettNavn.Id = k.Id;
+                ettNavn.Navn = k.Navn;
 
+                alleNavn.Add(ettNavn);
+            }
+            var jsonSerializer = new JavaScriptSerializer();
+            string json = jsonSerializer.Serialize(alleNavn);
+            return json;
+        }
         public string hentAlleNavn()
         {
             var db = new DBKategori();
