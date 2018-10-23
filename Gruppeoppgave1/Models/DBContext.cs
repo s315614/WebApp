@@ -49,6 +49,11 @@ namespace Gruppeoppgave1.Models
 
 
     }
+    public class jsFilm
+    {
+        public int Id { get; set; }
+        public string Navn { get; set; }
+    }
 
     public class jsKategor
     {
@@ -62,9 +67,9 @@ namespace Gruppeoppgave1.Models
 
         public string OrdreDate { get; set; }
 
-        public Brukere BrukereId { get; set; }
+        public virtual Brukere BrukereId { get; set; }
 
-        public Filmer FilmerId { get; set; }
+        public virtual Filmer FilmerId { get; set; }
 
 
     }

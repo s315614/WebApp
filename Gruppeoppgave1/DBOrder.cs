@@ -49,5 +49,35 @@ namespace Gruppeoppgave1
                 return hentetOrdere;
             }
         }
+        public bool lagreOrdre(Order lagerorder)
+        {
+
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    var nyOrdreRad = new Ordrer();
+                    // var KategoriEtterId = db.Kategorier.Find(lagerorder.KategoriId);
+                    var BrukeretterId = db.Brukere.Find(lagerorder.BrukerId);   //problem med aksepteres Epost
+                    var FilmetterId = db.Filmer.Find(lagerorder.FilmId);        //problem med aksepteres Id
+
+
+                    nyOrdreRad.OrdreDate = lagerorder.OrdreDate;
+                    nyOrdreRad.BrukereId = BrukeretterId;
+                    nyOrdreRad.FilmerId = FilmetterId;
+                   
+
+
+                    db.Ordrer.Add(nyOrdreRad);
+                    db.SaveChanges();
+                    return true;
+
+                }
+                catch (Exception feil)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

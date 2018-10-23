@@ -1,9 +1,33 @@
 ﻿$(function () {
 
-    // alert("Trykk på (Bruker) for å liste ut Brukere! Husk og vent i noen sekunder før listene vises");
+    $.ajax({
+            url: '/Home/hentAlleFilmNavn',
+            type: 'GET',
+            dataType: 'json',
+            success: function (jsFilm) {
+                VisDropDown(jsFilm);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
 
-    // opprett en hendelse på dropdown-listen når siden lastes
-
+    $("#drop").change(function () {
+            var id = $(this).val();
+            $.ajax({
+                url: '/Home/hentKatinfo/' + id,
+                type: 'GET',
+                dataType: 'json',
+                //  success: function (Home) {
+                // visInfoDynamisk(Home);
+                //  },
+                error: function (x, y, z) {
+                    //window.location.replace("/Home/AdminPage");
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        });
+    
     $("#visordretabell").click(function () {
         // var id = $(this).val();
 
@@ -20,8 +44,32 @@
                 alert("Kunne ikke hente Data");
             }
         });
-    })
+    });
+    $("#add2").click(function () {
 
+        // bygg et js objekt fra input feltene
+        var jsInn = {
+            OrdreDate: $("#ordredate").val(),
+            Epost: $("#brukerid").val(),
+            Id: $("#dropDown").val()
+            //BildeTekst: "Hei",
+        }
+
+        $.ajax({
+            url: '/Home/registerorder',
+            type: 'POST',
+            data: JSON.stringify(jsInn),
+            contentType: "application/json;charset=utf-8",
+            success: function (ok) {
+                // kunne ha feilhåndtert evt. feil i registreringen her
+                window.location.reload();
+                // reload av vinduet må sje her altså etter at kallet har returnert
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    })
 
 
 
@@ -62,14 +110,18 @@
 
 
 
-    function VisDropDown(jsKategorier) {
+    
+
+})
+
+
+function VisDropDown(jsKategorier) {
         var utStreng = "";
 
-        utStreng += "<option>Velg kategori</option>";
+        utStreng += "<option>Velg Filmer</option>";
         for (var i in jsKategorier) {
-            utStreng += "<option value='" + jsKategorier[i].KategoriId + "'>" + jsKategorier[i].KatgoriNavn + "</option>";
+            utStreng += "<option value='" + jsKategorier[i].Id + "'>" + jsKategorier[i].Navn + "</option>";
         }
         $("#drop").append(utStreng);
     }
-
-})
+}
