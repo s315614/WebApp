@@ -123,5 +123,5 @@ function VisDropDown(jsKategorier) {
             utStreng += "<option value='" + jsKategorier[i].Id + "'>" + jsKategorier[i].Navn + "</option>";
         }
         $("#drop").append(utStreng);
-    }
+    
 }
