@@ -24,6 +24,13 @@ namespace Gruppeoppgave1.Models
         public virtual List<Ordrer> Ordrer { get; set; }
     }
 
+    public class Adminer
+    {
+        [Key]
+        public string Navn { get; set; }
+        public byte[] Passord { get; set; }
+    }
+
     public class Filmer
     {
         [Key]
@@ -74,13 +81,7 @@ namespace Gruppeoppgave1.Models
 
     }
 
-    public class Adminer
-    {
-        [Key]
-        public string Navn { get; set; }
-        public byte[] Passord { get; set; }
-    }
-
+    
     public class DBContext : DbContext
     {
         public DBContext() :

@@ -25,6 +25,7 @@ namespace Gruppeoppgave1.Models
                 Telefon = "95234352",
                 Passord = passord
             };
+
             byte[] passordAdmin = lagHash("123456");
             var nyAdmin = new Adminer()
             {

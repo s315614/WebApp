@@ -84,6 +84,23 @@
         input[id=searchBox1]:focus {
             width: 100%;
         }
+    input[id=searchBox2] {
+        width: 75px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        // padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+        input[id=searchBox2]:focus {
+            width: 100%;
+        }
 </style>
 
 <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black; font-size:18px">
@@ -179,13 +196,13 @@
     <div id="menu2" class="tab-pane fade">
         <table>
             <tr>
-                <td><input id="searchBox1" type="text" name="søk.." placeholder="Search.."></td>
+                <td><input id="searchBox3" type="text" name="søk.." placeholder="Search.."></td>
                 <form action="">
                     <td><input id="ordredate" style="width:130px;" type="date" name="OrdreDate" placeholder="Dato"></td>
                     <td><input id="brukerid" style="width:130px;" type="text" name="BrukerId" placeholder="Epost"></td>
                     <!--   <td><input id="filmid" style="width:130px;" type="number" name="FilmId" placeholder="Film id"></td>  -->
                     <td><div id="dropDown"><select id="drop" style="width: 130px;"></select></div></td>
-                    <td><button id="add2" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
+                    <td><button id="added" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
                 </form>
             </tr>
         </table>
@@ -198,7 +215,7 @@
                 <form action="">
                     <td><input id="adminNavn" style="width:130px;" type="text" name="AdminNavn" placeholder="Navn"></td>
                     <td><input id="adminPassord" style="width:130px;" type="text" name="AdminPassord" placeholder="Passord"></td>
-                    <td><button id="add3" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
+                    <td><button id="insert" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
                 </form>
             </tr>
         </table>

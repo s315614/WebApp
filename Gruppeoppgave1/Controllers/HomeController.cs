@@ -350,6 +350,27 @@ namespace Gruppeoppgave1.Controllers
             return json;
         }
 
+        public string hentOrderInneholder(string Epost)
+        {
+            var db = new DBOrder();
+
+            List<Order> enOrder = db.hentOrderInnhold(Epost);
+
+            if (enOrder == null)
+            {
+                return null;
+            }
+
+            foreach (var order in enOrder)
+            {
+                //return View(db.hentOrderInnhold(Epost).ToList());
+            }
+            var jsonSerializer = new JavaScriptSerializer();
+            jsonSerializer.MaxJsonLength = Int32.MaxValue;
+            string json = jsonSerializer.Serialize(enOrder);
+            return json;
+        }
+
         public string hentAlleFilmer()
         {
             var db = new DBFilmer();

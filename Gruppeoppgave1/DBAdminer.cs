@@ -23,10 +23,44 @@ namespace Gruppeoppgave1
                 return alleAdminer;
             }
         }
+        public List<Admin> hentAdminInnhold(string Navn)
+        {
+            using (var db = new DBContext())
+            {
 
+                List<Admin> hentetAdminer = db.Adminer.Where(k => k.Navn.Contains(Navn)).Select(n => new Admin
+                {
+                    Navn = n.Navn,
+                    PassordByte = n.Passord    //check if it goes
+                    
+
+                }).ToList();
+
+                if (hentetAdminer.Count < 1)
+                {
+                    return null;
+                }
+                return hentetAdminer;
+            }
+        }
+     //   DBContext db = new DBContext();
         public bool lagreAdmin(Admin innAdmin)
         {
-
+           /* var nyAdmin = new Adminer
+            {
+                Navn = innAdmin.Navn,
+                Passord = innAdmin.PassordByte
+            };
+            try
+            {
+                db.Adminer.Add(nyAdmin);
+                db.SaveChanges();
+            }
+            catch(Exception feil)
+            {
+                return false;
+            }
+            return true; */
             using (var db = new DBContext())
             {
                 try
