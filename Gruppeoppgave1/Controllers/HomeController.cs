@@ -132,6 +132,14 @@ namespace Gruppeoppgave1.Controllers
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
+        public string registerorder(Order innOrder)
+        {
+            var db = new DBOrder();
+            db.lagreOrdre(innOrder);
+            var jsonSerializer = new JavaScriptSerializer();
+            return jsonSerializer.Serialize("OK");
+
+        }
 
         public ActionResult MainPage()
         {

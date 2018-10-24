@@ -17,8 +17,9 @@ namespace Gruppeoppgave1
                     OrdrerId = k.OrdrerId,
                     OrdreDate = k.OrdreDate,
                     BrukerId = k.BrukereId.Epost,
-                    FilmId = k.FilmerId.Id,
+//                  FilmId = k.FilmerId.Id,
                     FilmNavn = k.FilmerId.Navn
+                    
 
                 }).ToList();
 
