@@ -33,7 +33,7 @@
         var htmlRowTop = '';
 
         htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
-        htmlRowTop += '<tr><th scope="col">Navn</th><th scope="col">Passord</th>';
+        htmlRowTop += '<tr><th scope="col">Navn</th>';
         htmlRowTop += '<th scope="col"></th><th scope="col"></th>';
         htmlRowTop += '</tr></thead><tbody>';
 
@@ -44,10 +44,10 @@
             htmlRowTop += '<tr>';
             htmlRowTop += '<td>' + item.Navn + '</td>';
            
-            htmlRowTop += '<td>' + item.PassordByte + '</td>';
+           // htmlRowTop += '<td>' + item.PassordByte + '</td>';
            
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update">Delete</button></td>';
+            htmlRowTop += '<td><button id="update">Delete</button></td></tr>';
 
 
         });
@@ -58,17 +58,46 @@
 
 
     }
+    $("#add3").click(function () {
 
-
-
-    function VisDropDown(jsKategorier) {
-        var utStreng = "";
-
-        utStreng += "<option>Velg kategori</option>";
-        for (var i in jsKategorier) {
-            utStreng += "<option value='" + jsKategorier[i].KategoriId + "'>" + jsKategorier[i].KatgoriNavn + "</option>";
+        // bygg et js objekt fra input feltene
+        var jsInn = {
+            Navn: $("#adminNavn").val(),
+            Passord: $("#adminPassord").val()
+            
         }
-        $("#drop").append(utStreng);
-    }
+
+        $.ajax({
+            url: '/Home/addAdmin',
+            type: 'POST',
+            data: JSON.stringify(jsInn),
+            contentType: "application/json;charset=utf-8",
+            success: function (ok) {
+                // kunne ha feilhåndtert evt. feil i registreringen her
+                window.location.reload();
+                // reload av vinduet må sje her altså etter at kallet har returnert
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    })
+    $("#searchBox2").change(function () {
+        var id = $(this).val();
+        $.ajax({
+            url: '/Home/hentFilmInneholder/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (film) {
+                visInfoDynamisk(film);
+            },
+            error: function (x, y, z) {
+                //window.location.replace("/Home/AdminPage");
+            }
+        });
+    });
+
+
+    
 
 })

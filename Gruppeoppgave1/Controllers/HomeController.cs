@@ -118,6 +118,13 @@ namespace Gruppeoppgave1.Controllers
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
+        public string addAdmin(Admin innAdmin)
+        {
+            var db = new DBAdminer();
+            db.lagreAdmin(innAdmin);
+            var jsonSerializer = new JavaScriptSerializer();
+            return jsonSerializer.Serialize("OK");
+        }
         public string registerbruker(Bruker innBruker)
         {
             var db = new DBBruker();
@@ -201,12 +208,13 @@ namespace Gruppeoppgave1.Controllers
 
            
         }
-        public void RemoveBrukerButton_Click()
+        public void RemoveBrukerButton_Click(object senders, EventArgs e)
         {
             string epost = (string)Session["BrukerId"];
             using ( var db = new DBContext())
             {
-                var brukere = db.Brukere.FirstOrDefault(b => b.Epost == epost);
+                var brukere = (from c in db.Brukere where c.Epost == epost select c).FirstOrDefault();
+              //  var brukere = db.Brukere.FirstOrDefault(b => b.Epost == epost);
                 db.Brukere.Remove(brukere);
                 db.SaveChanges();
             }
@@ -320,6 +328,7 @@ namespace Gruppeoppgave1.Controllers
             string json = jsonSerializer.Serialize(enFilm);
             return json;
         }
+
         public string hentBrukerInneholder(string Epost)
         {
             var db = new DBBruker();
@@ -331,7 +340,10 @@ namespace Gruppeoppgave1.Controllers
                 return null;
             }
 
-            
+            foreach( var bruker in enBruker)
+            {
+                //return View(db.hentBrukerInnhold(Bruker).ToList());
+            }
             var jsonSerializer = new JavaScriptSerializer();
             jsonSerializer.MaxJsonLength = Int32.MaxValue;
             string json = jsonSerializer.Serialize(enBruker);

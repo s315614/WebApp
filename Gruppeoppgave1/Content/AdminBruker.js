@@ -34,6 +34,7 @@
             Fødselsdato: $("#fødselsdato").val()
            
         }
+        
 
         $.ajax({
             url: '/Home/registerbruker',
@@ -41,12 +42,15 @@
             data: JSON.stringify(jsInn),
             contentType: "application/json;charset=utf-8",
             success: function (ok) {
+                show_data();
+                alert("submit successfully");
                 // kunne ha feilhåndtert evt. feil i registreringen her
                 window.location.reload();
                 // reload av vinduet må sje her altså etter at kallet har returnert
             },
             error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
+                alert("failed");
+                //alert(x + '\n' + y + '\n' + z);
             }
 
         });
@@ -74,7 +78,7 @@
 
         htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
         htmlRowTop += '<tr><th scope="col">Epost</th><th scope="col">Fornavn</th><th scope="col">Etternavn</th>';
-        htmlRowTop += '<th scope="col">Addresse</th><th scope="col">Passord</th><th scope="col">Telefon</th><th scope="col">Fødselsdato</th><th scope="col"></th><th scope="col"></th>';
+        htmlRowTop += '<th scope="col">Addresse</th><th scope="col">Telefon</th><th scope="col">Fødselsdato</th><th scope="col"></th><th scope="col"></th>';
         htmlRowTop += '</tr></thead><tbody>';
 
 
@@ -86,7 +90,7 @@
             htmlRowTop += '<td>' + item.Fornavn + '</td>';
             htmlRowTop += '<td>' + item.Etternavn + '</td>';
             htmlRowTop += '<td>' + item.Adresse + '</td>';
-            htmlRowTop += '<td>' + item.PassordByte + '</td>';
+          //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
             htmlRowTop += '<td>' + item.Telefon + '</td>';
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';
@@ -108,7 +112,7 @@
 
         htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
         htmlRowTop += '<tr><th scope="col">Epost</th><th scope="col">Fornavn</th><th scope="col">Etternavn</th>';
-        htmlRowTop += '<th scope="col">Addresse</th><th scope="col">Passord</th><th scope="col">Telefon</th><th scope="col">Fødselsdato</th><th scope="col"></th><th scope="col"></th>';
+        htmlRowTop += '<th scope="col">Addresse</th><th scope="col">Telefon</th><th scope="col">Fødselsdato</th><th scope="col"></th><th scope="col"></th>';
         htmlRowTop += '</tr></thead><tbody>';
 
 
@@ -120,11 +124,11 @@
             htmlRowTop += '<td>' + item.Fornavn + '</td>';
             htmlRowTop += '<td>' + item.Etternavn + '</td>';
             htmlRowTop += '<td>' + item.Adresse + '</td>';
-            htmlRowTop += '<td>' + item.PassordByte + '</td>';
+          //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
             htmlRowTop += '<td>' + item.Telefon + '</td>';
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update" OnClick="RemoveBrukerButton_Click">Delete</button></td>';
+            htmlRowTop += '<td><button id="update" OnClick="RemoveBrukerButton_Click('+item.Epost+')">Delete</button></td>';
 
 
         });
@@ -135,7 +139,7 @@
 
 
     }
-
+    
    
 
     function VisDropDown(jsKategorier) {
@@ -149,3 +153,6 @@
     }
 
 })
+function RemoveBrukerButton_Click(Epost) {
+    window.location = "/Home/RemoveBrukerButton_Click/" + Epost;
+}
