@@ -216,6 +216,23 @@ namespace Gruppeoppgave1.Controllers
 
            
         }
+        public bool slett(string epost)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    var slettObjekt = db.Brukere.Find(epost);
+                    db.Brukere.Remove(slettObjekt);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception feil)
+                {
+                    return false;
+                }
+            }
+        }
         public void RemoveBrukerButton_Click(object senders, EventArgs e)
         {
             string epost = (string)Session["BrukerId"];
