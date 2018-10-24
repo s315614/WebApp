@@ -93,45 +93,35 @@
 
         $("#visTabellOrdrer").append(htmlRowTop);
     }
-
-    function visTabellOrdre(order) {
-
-        $("#visTabellOrdrer").html("");
-
-        var htmlRowTop = '';
-
-        htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
-        htmlRowTop += '<tr><th scope="col">OrdrerId</th><th scope="col">OrdreDate</th><th scope="col">Epost</th>';
-        htmlRowTop += '<th scope="col">Film</th><th scope="col"></th><th scope="col"></th>';
-        htmlRowTop += '</tr></thead><tbody>';
-
-
-        $.each(order, function (i, item) {
-
-
-            htmlRowTop += '<tr>';
-            htmlRowTop += '<td>' + item.OrdrerId + '</td>';
-            htmlRowTop += '<td>' + item.OrdreDate + '</td>';
-            htmlRowTop += '<td>' + item.BrukerId + '</td>';
-            htmlRowTop += '<td>' + item.FilmNavn + '</td>';
-            
-            htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update">Delete</button></td>';
-
-
-        });
-
-        htmlRowTop += '</tbody></table>';
-
-        $("#visTabellOrdrer").append(htmlRowTop);
-
-
-    }
-
-
-
-    
-
 })
+function visTabellOrdre(order) {
+
+    $("#visTabellOrdrer").html("");
+
+    var htmlRowTop = '';
+
+    htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
+    htmlRowTop += '<tr><th scope="col">OrdrerId</th><th scope="col">OrdreDate</th><th scope="col">Epost</th>';
+    htmlRowTop += '<th scope="col">Film</th><th scope="col"></th><th scope="col"></th>';
+    htmlRowTop += '</tr></thead><tbody>';
+
+
+    $.each(order, function (i, item) {
+
+
+        htmlRowTop += '<tr>';
+        htmlRowTop += '<td>' + item.OrdrerId + '</td>';
+        htmlRowTop += '<td>' + item.OrdreDate + '</td>';
+        htmlRowTop += '<td>' + item.BrukerId + '</td>';
+        htmlRowTop += '<td>' + item.FilmNavn + '</td>';
+        htmlRowTop += '<td><button id="update">Edit</button></td>';
+        htmlRowTop += '<td><button id="update">Delete</button></td>';
+
+    });
+
+    htmlRowTop += '</tbody></table>';
+
+    $("#visTabellOrdrer").append(htmlRowTop);
+}
 
 
