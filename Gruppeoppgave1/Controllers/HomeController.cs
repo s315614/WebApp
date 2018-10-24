@@ -201,7 +201,17 @@ namespace Gruppeoppgave1.Controllers
 
            
         }
-
+        public void RemoveBrukerButton_Click()
+        {
+            string epost = (string)Session["BrukerId"];
+            using ( var db = new DBContext())
+            {
+                var brukere = db.Brukere.FirstOrDefault(b => b.Epost == epost);
+                db.Brukere.Remove(brukere);
+                db.SaveChanges();
+            }
+          //  return RedirectToAction("AdminPage");
+        }
         [HttpPost]
         public ActionResult Payment(Film innfilm)
         {
