@@ -94,7 +94,7 @@
             htmlRowTop += '<td>' + item.Telefon + '</td>';
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update" OnClick="RemoveBrukerButton_Click(' + item.Epost +')">Delete</button></td>';
+            htmlRowTop += '<td><button id="update" OnClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
 
 
         });
