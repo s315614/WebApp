@@ -132,6 +132,13 @@ namespace Gruppeoppgave1.Controllers
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
+        public string slettBruker(string utBruker)
+        {
+            var db = new DBBruker();
+            db.slett(utBruker);
+            var jsonSerializer = new JavaScriptSerializer();
+            return jsonSerializer.Serialize("OK");
+        }
         public string registerorder(Order innOrder)
         {
             var db = new DBOrder();
@@ -216,7 +223,7 @@ namespace Gruppeoppgave1.Controllers
 
            
         }
-        public bool slett(string epost)
+      /*  public bool slett(string epost)
         {
             using (var db = new DBContext())
             {
@@ -232,9 +239,16 @@ namespace Gruppeoppgave1.Controllers
                     return false;
                 }
             }
+        }*/
+        public ActionResult DeleteBruker(string id)
+        {
+            var brukerDB = new DBBruker();
+            Bruker enBruker = brukerDB.hentEnBruker(id);
+            return View(enBruker); 
         }
 
         [HttpPost]
+<<<<<<< HEAD
         public bool slettOrder(int id)
         {
 
@@ -252,12 +266,20 @@ namespace Gruppeoppgave1.Controllers
         }
 
        /* public ActionResult sletting(string Epost)
+=======
+        public ActionResult DeleteBruker(string id, Bruker slett)
+>>>>>>> 54a533f18853c85177f3c12f75966d8a9e6f2cd0
         {
-            var db = new DBContext();
-            var  enBruker = db.Brukere.Find(Epost);
-            return View(enBruker);
-        }*/
-        public void RemoveBrukerButton_Click(object senders, EventArgs e)
+            var brukerDB = new DBBruker();
+            bool slettOK = brukerDB.slett(id);
+            if (slettOK)
+            {
+                return RedirectToAction("AdminPage");
+            }
+            return View();
+        }
+
+       /* public void RemoveBrukerButton_Click(object senders, EventArgs e)
         {
             string epost = (string)Session["BrukerId"];
             using ( var db = new DBContext())
@@ -268,7 +290,7 @@ namespace Gruppeoppgave1.Controllers
                 db.SaveChanges();
             }
           //  return RedirectToAction("AdminPage");
-        }
+        }*/
         [HttpPost]
         public ActionResult Payment(Film innfilm)
         {
