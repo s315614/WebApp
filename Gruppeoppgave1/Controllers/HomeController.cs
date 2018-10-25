@@ -233,6 +233,24 @@ namespace Gruppeoppgave1.Controllers
                 }
             }
         }
+
+        [HttpPost]
+        public bool slettOrder(int id)
+        {
+
+            try
+            {
+                var db = new DBOrder();
+                db.slettOrder(id);
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+            
+        }
+
        /* public ActionResult sletting(string Epost)
         {
             var db = new DBContext();

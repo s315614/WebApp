@@ -80,12 +80,12 @@
             htmlRowTop += '<tr>';
             htmlRowTop += '<td>' + item.OrdrerId + '</td>';
             htmlRowTop += '<td>' + item.OrdreDate + '</td>';
-            htmlRowTop += '<td>' + item.BrukerId + '</td>';
+            htmlRowTop += '<td>' + item.BrukerId + '</td>';0
             htmlRowTop += '<td>' + item.FilmNavn + '</td>';
 
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update">Delete</button></td>';
-
+            htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
+            s
 
         });
 
@@ -94,6 +94,32 @@
         $("#visTabellOrdrer").append(htmlRowTop);
     }
 })
+
+
+function deleteValue(val) {
+    //alert(val);
+
+    var id = parseInt(val);
+   
+
+    $.ajax({
+        url: '/Home/slettOrder/'+ id,
+        type: 'POST',
+        dataType: 'json',
+        success: function (boolean) {
+            if (boolean) {
+                alert("Orderet er nå slettet!");
+            } else 
+            alert("Feil med å slette orderet");
+        },
+        error: function () {
+           // window.location.replace("/Home/MainPage");
+            alert("Hvorfor blir function return error? Selvom funksjonen blir kjørt, og vi har slettet orderet!");
+        }
+    });
+}
+
+
 function visTabellOrdre(order) {
 
     $("#visTabellOrdrer").html("");
@@ -115,7 +141,7 @@ function visTabellOrdre(order) {
         htmlRowTop += '<td>' + item.BrukerId + '</td>';
         htmlRowTop += '<td>' + item.FilmNavn + '</td>';
         htmlRowTop += '<td><button id="update">Edit</button></td>';
-        htmlRowTop += '<td><button id="update">Delete</button></td>';
+        htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
 
     });
 

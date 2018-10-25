@@ -80,5 +80,23 @@ namespace Gruppeoppgave1
                 }
             }
         }
+
+        public bool slettOrder(int id)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    var slettObjekt = db.Ordrer.Find(id);
+                    db.Ordrer.Remove(slettObjekt);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception feil)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
