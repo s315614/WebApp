@@ -248,7 +248,6 @@ namespace Gruppeoppgave1.Controllers
         }
 
         [HttpPost]
-<<<<<<< HEAD
         public bool slettOrder(int id)
         {
 

@@ -504,9 +504,7 @@ C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\bin\System.Web.Webpages.Razo
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\bin\System.Web.Helpers.xml
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\bin\System.Web.Mvc.xml
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojAssemblyReference.cache
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csproj.CoreCompileInputs.cache
-C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csproj.CopyComplete
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.dll
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.pdb
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\bin\Gruppeoppgave1.dll.config
@@ -581,3 +579,4 @@ C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.c
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csproj.CopyComplete
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.dll
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.pdb
+C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojResolveAssemblyReference.cache
