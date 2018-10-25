@@ -109,9 +109,34 @@ namespace Gruppeoppgave1
             utData = algoritme.ComputeHash(innData);
             return utData;
         }
+        public Bruker hentEnBruker(string id)
+        {
+            var db = new DBContext();
+
+            var enBrukerDB = db.Brukere.Find(id);
+
+            if (enBrukerDB == null)
+            {
+                return null;
+            }
+            else
+            {
+                var utBruker = new Bruker()
+                {
+                    Epost = enBrukerDB.Epost,
+                    Fornavn = enBrukerDB.Fornavn,
+                    Etternavn = enBrukerDB.Etternavn,
+                    Adresse = enBrukerDB.Adresse,
+                    PassordByte = enBrukerDB.Passord,
+                    Telefon = enBrukerDB.Telefon,
+                    Fødselsdato = enBrukerDB.Fødselsdato
+                };
+                return utBruker;
+            }
+        }
 
 
- 
+
 
 
 

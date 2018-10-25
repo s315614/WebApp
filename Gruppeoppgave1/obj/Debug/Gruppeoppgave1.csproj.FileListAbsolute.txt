@@ -577,7 +577,6 @@ C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\bin\System.Web.Webpages.Ra
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\bin\System.Web.Helpers.xml
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\bin\System.Web.Mvc.xml
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojAssemblyReference.cache
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csproj.CoreCompileInputs.cache
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csproj.CopyComplete
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.dll

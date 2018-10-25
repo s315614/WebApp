@@ -21,6 +21,24 @@
             }
         });
     })
+    $("#delete").click(function () {
+        var jsInn = {
+            Fornavn: item.Fornavn
+        }
+        $.ajax({
+            url: '/Home/slettBruker',
+            type: 'POST',
+            data: JSON.stringify(jsInn),
+            contentType: "application/json;charset=utf-8",
+            success: function (ok) {
+                window.location.reload;
+            },
+            error: function (x, y, z) {
+                //alert("failed");
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    })
     $("#add").click(function () {
 
         // bygg et js objekt fra input feltene
@@ -94,7 +112,7 @@
             htmlRowTop += '<td>' + item.Telefon + '</td>';
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update" OnClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
+            htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ') >Delete</button></td>';
 
 
         });
@@ -128,7 +146,7 @@
             htmlRowTop += '<td>' + item.Telefon + '</td>';
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update" OnClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
+            htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
 
 
         });
@@ -154,5 +172,6 @@
 
 })
 function RemoveBrukerButton_Click(Fornavn) {
-    window.location = "/Home/slett/" + Fornavn;
+    var Fornavn = $("#fornavn").val();
+    window.location = "/Home/DeleteBruker/" + Fornavn;
 }
