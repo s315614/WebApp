@@ -233,6 +233,12 @@ namespace Gruppeoppgave1.Controllers
                 }
             }
         }
+       /* public ActionResult sletting(string Epost)
+        {
+            var db = new DBContext();
+            var  enBruker = db.Brukere.Find(Epost);
+            return View(enBruker);
+        }*/
         public void RemoveBrukerButton_Click(object senders, EventArgs e)
         {
             string epost = (string)Session["BrukerId"];

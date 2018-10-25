@@ -43,8 +43,8 @@
                 // reload av vinduet må sje her altså etter at kallet har returnert
             },
             error: function (x, y, z) {
-                alert("failed");
-                //alert(x + '\n' + y + '\n' + z);
+               // alert("failed");
+                alert(x + '\n' + y + '\n' + z);
             }
         });
     })

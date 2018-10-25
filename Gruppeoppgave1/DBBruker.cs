@@ -82,11 +82,7 @@ namespace Gruppeoppgave1
                 }
             }
         }
-
-        
-
-
-
+                
         public bool slett(string epost)
         {
             using (var db = new DBContext())

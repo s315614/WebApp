@@ -49,8 +49,8 @@
                 // reload av vinduet må sje her altså etter at kallet har returnert
             },
             error: function (x, y, z) {
-                alert("failed");
-                //alert(x + '\n' + y + '\n' + z);
+                //alert("failed");
+                alert(x + '\n' + y + '\n' + z);
             }
 
         });
@@ -128,7 +128,7 @@
             htmlRowTop += '<td>' + item.Telefon + '</td>';
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update" OnClick="RemoveBrukerButton_Click('+item.Epost+')">Delete</button></td>';
+            htmlRowTop += '<td><button id="update" OnClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
 
 
         });
@@ -153,6 +153,6 @@
     }
 
 })
-function RemoveBrukerButton_Click(Epost) {
-    window.location = "/Home/slett/" + Epost;
+function RemoveBrukerButton_Click(Fornavn) {
+    window.location = "/Home/slett/" + Fornavn;
 }
