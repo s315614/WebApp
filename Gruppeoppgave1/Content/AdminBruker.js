@@ -205,31 +205,17 @@ function visTabellBrukere(bruker) {
         //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
         htmlRowTop += '<td>' + item.Telefon + '</td>';
         htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
-        htmlRowTop += '<td><button data-toggle="modal" data-target="#'+ item.Fornavn + item.Fødselsdato +'" id="update">TEst edit</button></td>';
+        htmlRowTop += '<td><button data-toggle="modal" data-target="#'+ item.Fornavn + item.Fødselsdato +'" id="update">Edit</button></td>';
         htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
 
         htmlRowTop += [
-            '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">',
-            '<div class="modal-dialog" role="document">',
-            '   <div class="modal-content">',
-            '      <div class="modal-header">',
-            '         <h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
-            '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">',
-            '           <span aria-hidden="true">&times;</span>',
-            '      </button>',
-            ' </div>',
-            '<div class="modal-body">',
-            ' </div>',
-            '      <div class="modal-footer">',
-            '<h1>'+ "Lag Form her"+'</h1>',
-            '<h3>'+ item.Epost +'</h3>',
-            '           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
-            '<button type="button" class="btn btn-primary" onclick="Lage en funksjon til update her!">Save changes</button>',
-
-            '         </div>',
-            '      </div>',
-            '   </div>',
-            '</div>'
+            '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
+            '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
+            //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
+            '<div contenteditable="true">'+item.Epost+'</div>',
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
+            '<div class="modal-body"></div> <div class="modal-footer"><h1>'+ "Lag Form her"+'</h1>  <h3>'+ item.Epost +'</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+            '<button type="button" class="btn btn-primary" onclick="Lage en funksjon til update her!">Save changes</button>         </div>   </div>   </div></div>'
         ];
 
     });
