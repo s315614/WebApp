@@ -3,7 +3,7 @@
    // alert("Trykk på (Bruker) for å liste ut Brukere! Husk og vent i noen sekunder før listene vises");
 
     // opprett en hendelse på dropdown-listen når siden lastes
-
+    alert("Tabell reloaded!!!!!");
     $("#visbrukertabell").click(function () {
         // var id = $(this).val();
 
@@ -92,6 +92,7 @@
     function visInfoDynamisk(bruker) {
         $("#visTabellBruker").html("");
 
+        alert("Tabell reloaded");
         var htmlRowTop = '';
 
         htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
@@ -110,14 +111,37 @@
             htmlRowTop += '<td>' + item.Adresse + '</td>';
           //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
             htmlRowTop += '<td>' + item.Telefon + '</td>';
-            htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
-            htmlRowTop += '<td><button id="update">Edit</button></td>';
+            //htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
+            htmlRowTop += '<td><a data-toggle="modal" data-target="#' + item.Epost + '">Trykk her for pop up!</a></td>'
+           // htmlRowTop += '<td><button data-toggle="modal" data-target="#" id="update">TEst edit</button></td>';
             htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ') >Delete</button></td>';
 
 
         });
 
         htmlRowTop += '</tbody></table>';
+        htmlRowTop += [
+            '<div class="modal fade" id="' + item.Epost + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">',
+            '<div class="modal-dialog" role="document">',
+            '   <div class="modal-content">',
+            '      <div class="modal-header">',
+            '         <h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
+            '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">',
+            '           <span aria-hidden="true">&times;</span>',
+            '      </button>',
+            ' </div>',
+            '<div class="modal-body">',
+            ' </div>',
+            '      <div class="modal-footer">',
+            '           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+            '<button type="button" class="btn btn-primary" onclick="toLogin()">Buy</button>',
+
+            '         </div>',
+            '      </div>',
+            '   </div>',
+            '</div>'
+        ];
+
 
         $("#visTabellBruker").append(htmlRowTop);
     }
@@ -181,13 +205,36 @@ function visTabellBrukere(bruker) {
         //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
         htmlRowTop += '<td>' + item.Telefon + '</td>';
         htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
-        htmlRowTop += '<td><button id="update">Edit</button></td>';
+        htmlRowTop += '<td><button data-toggle="modal" data-target="#'+ item.Fornavn + item.Fødselsdato +'" id="update">TEst edit</button></td>';
         htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
 
+        htmlRowTop += [
+            '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">',
+            '<div class="modal-dialog" role="document">',
+            '   <div class="modal-content">',
+            '      <div class="modal-header">',
+            '         <h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
+            '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">',
+            '           <span aria-hidden="true">&times;</span>',
+            '      </button>',
+            ' </div>',
+            '<div class="modal-body">',
+            ' </div>',
+            '      <div class="modal-footer">',
+            '<h1>'+ "Lag Form her"+'</h1>',
+            '<h3>'+ item.Epost +'</h3>',
+            '           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+            '<button type="button" class="btn btn-primary" onclick="Lage en funksjon til update her!">Save changes</button>',
+
+            '         </div>',
+            '      </div>',
+            '   </div>',
+            '</div>'
+        ];
 
     });
-
     htmlRowTop += '</tbody></table>';
+    
 
     $("#visTabellBruker").append(htmlRowTop);
 

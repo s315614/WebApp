@@ -83,7 +83,7 @@
             htmlRowTop += '<td>' + item.BrukerId + '</td>';0
             htmlRowTop += '<td>' + item.FilmNavn + '</td>';
 
-            htmlRowTop += '<td><button id="update" onclick="showPopup()">Edit</button></td>';
+            htmlRowTop += '<td><button id="update" onclick="">Edit</button></td>';
             htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
             s
 
@@ -124,25 +124,6 @@ function edit(Id) {
     window.location = "/Home/Edit/" + Id;
 } 
 
-function showPopup(url) {
-    url = '/Home/EditPage',
-    type: 'GET',
-    window.open(url, "#1", "dialogHeight:600px;dialogHeight:400px;dialogWidth:700px;dialogTop:300px;dialogLeft:400px;edge:Raised;center:Yes;help:No;Resiable:No;Status:No;");
-   /* $("#update").dialog({
-        height: 400,
-        width: 500,
-        modal: true,
-        buttons: {
-            "Submit": function () {
-                $(this).dialog("close");
-                alert("du valgte submit")
-            },
-            "Cancel": function () {
-                $(this).dialog("close");
-            }
-        }
-    });*/
-}
 
 function visTabellOrdre(order) {
 
@@ -164,7 +145,7 @@ function visTabellOrdre(order) {
         htmlRowTop += '<td>' + item.OrdreDate + '</td>';
         htmlRowTop += '<td>' + item.BrukerId + '</td>';
         htmlRowTop += '<td>' + item.FilmNavn + '</td>';
-        htmlRowTop += '<td><button id="update" onclick="showPopup()">Edit</button></td>';
+        htmlRowTop += '<td><button id="update" onclick="">Edit</button></td>';
         htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
 
     });
