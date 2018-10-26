@@ -173,8 +173,7 @@
 })
 function RemoveBrukerButton_Click(val) {
     var id = parseStrin(val);
-   /* var Fornavn = $("#fornavn").val();
-    window.location = "/Home/DeleteBruker/" + Fornavn;  */
+   
     $.ajax({
         url: '/Home/DeleteBruker/' + id,
         type: 'POST',
