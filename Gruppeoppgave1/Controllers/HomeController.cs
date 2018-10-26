@@ -240,11 +240,26 @@ namespace Gruppeoppgave1.Controllers
                 }
             }
         }*/
-        public ActionResult DeleteBruker(string id)
+       /* public ActionResult DeleteBruker(string id)
         {
             var brukerDB = new DBBruker();
             Bruker enBruker = brukerDB.hentEnBruker(id);
             return View(enBruker); 
+
+        }*/
+        [HttpPost]
+        public bool DeleteBruker(string id)
+        {
+            try
+            {
+                var db = new DBBruker();
+                db.slett(id);
+                return true;
+            }
+            catch(Exception feil)
+            {
+                return false;
+            }
         }
 
         [HttpPost]

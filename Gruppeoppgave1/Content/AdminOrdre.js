@@ -114,7 +114,8 @@ function deleteValue(val) {
         },
         error: function () {
            // window.location.replace("/Home/MainPage");
-            alert("Hvorfor blir function return error? Selvom funksjonen blir kjørt, og vi har slettet orderet!");
+            //alert("Hvorfor blir function return error? Selvom funksjonen blir kjørt, og vi har slettet orderet!");
+            window.location.reload();
         }
     });
 }

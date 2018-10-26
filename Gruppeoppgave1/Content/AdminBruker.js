@@ -171,7 +171,24 @@
     }
 
 })
-function RemoveBrukerButton_Click(Fornavn) {
-    var Fornavn = $("#fornavn").val();
-    window.location = "/Home/DeleteBruker/" + Fornavn;
+function RemoveBrukerButton_Click(val) {
+    var id = parseStrin(val);
+   /* var Fornavn = $("#fornavn").val();
+    window.location = "/Home/DeleteBruker/" + Fornavn;  */
+    $.ajax({
+        url: '/Home/DeleteBruker/' + id,
+        type: 'POST',
+        dataType: 'json',
+        success: function (boolean) {
+            if (boolean) {
+                alert("Bruker er nå slettet!");
+            } else {
+                alert("Feil med å slette Bruker");
+            }
+
+        },
+        Error: function () {
+            alert("failed");
+        }
+    });
 }
