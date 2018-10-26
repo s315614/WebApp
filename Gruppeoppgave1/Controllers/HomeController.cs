@@ -132,13 +132,13 @@ namespace Gruppeoppgave1.Controllers
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
-        public string slettBruker(string utBruker)
+    /*    public string slettBruker(string utBruker)
         {
             var db = new DBBruker();
             db.slett(utBruker);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
-        }
+        }*/
         public string registerorder(Order innOrder)
         {
             var db = new DBOrder();
@@ -257,6 +257,21 @@ namespace Gruppeoppgave1.Controllers
                 return true;
             }
             catch(Exception feil)
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        public bool slettAdmin(string id)
+        {
+            try
+            {
+                var db = new DBAdminer();
+                db.slett(id);
+                return true;
+            }
+            catch (Exception feil)
             {
                 return false;
             }

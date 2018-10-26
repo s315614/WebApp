@@ -1,4 +1,5 @@
 ﻿$(function () {
+    
 
     // alert("Trykk på (Bruker) for å liste ut Brukere! Husk og vent i noen sekunder før listene vises");
 
@@ -80,7 +81,7 @@
             htmlRowTop += '<tr>';
             htmlRowTop += '<td>' + item.Navn + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update">Delete</button></td></tr>';
+            htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.Navn + ')">Delete</button></td></tr>';
 
         });
 
@@ -88,42 +89,64 @@
 
         $("#visTabellAdmin").append(htmlRowTop);
     }
-    function visTabellAdminer(admin) {
-
-        $("#visTabellAdmin").html("");
-
-        var htmlRowTop = '';
-
-        htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
-        htmlRowTop += '<tr><th scope="col">Navn</th>';
-        htmlRowTop += '<th scope="col"></th><th scope="col"></th>';
-        htmlRowTop += '</tr></thead><tbody>';
-
-
-        $.each(admin, function (i, item) {
-
-
-            htmlRowTop += '<tr>';
-            htmlRowTop += '<td>' + item.Navn + '</td>';
-           
-           // htmlRowTop += '<td>' + item.PassordByte + '</td>';
-           
-            htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="update">Delete</button></td></tr>';
-
-
-        });
-
-        htmlRowTop += '</tbody></table>';
-
-        $("#visTabellAdmin").append(htmlRowTop);
-
-
-    }
-    
-    
-
-
-    
+        
 
 })
+function deleteValue(val) {
+    //alert(val);
+
+    var id = val;
+
+
+    $.ajax({
+        url: '/Home/slettAdmin/' + id,
+        type: 'POST',
+        dataType: 'json',
+        success: function (boolean) {
+            if (boolean) {
+                alert("Orderet er nå slettet!");
+            } else
+                alert("Feil med å slette orderet");
+        },
+        error: function () {
+            // window.location.replace("/Home/MainPage");
+            //alert("Hvorfor blir function return error? Selvom funksjonen blir kjørt, og vi har slettet orderet!");
+            window.location.reload();
+        }
+    });
+}
+
+
+
+function visTabellAdminer(admin) {
+
+    $("#visTabellAdmin").html("");
+
+    var htmlRowTop = '';
+
+    htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
+    htmlRowTop += '<tr><th scope="col">Navn</th>';
+    htmlRowTop += '<th scope="col"></th><th scope="col"></th>';
+    htmlRowTop += '</tr></thead><tbody>';
+
+
+    $.each(admin, function (i, item) {
+
+
+        htmlRowTop += '<tr>';
+        htmlRowTop += '<td>' + item.Navn + '</td>';
+
+        // htmlRowTop += '<td>' + item.PassordByte + '</td>';
+
+        htmlRowTop += '<td><button id="update">Edit</button></td>';
+        htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.Navn + ')">Delete</button></td></tr>';
+
+
+    });
+
+    htmlRowTop += '</tbody></table>';
+
+    $("#visTabellAdmin").append(htmlRowTop);
+
+
+}

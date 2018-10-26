@@ -83,7 +83,7 @@
             htmlRowTop += '<td>' + item.BrukerId + '</td>';0
             htmlRowTop += '<td>' + item.FilmNavn + '</td>';
 
-            htmlRowTop += '<td><button id="update">Edit</button></td>';
+            htmlRowTop += '<td><button id="update" onclick="edit(' + item.OrdrerId + ')>Edit</button></td>';
             htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
             s
 
@@ -120,6 +120,10 @@ function deleteValue(val) {
     });
 }
 
+function edit(Id) {
+    window.location = "/Home/Edit/" + Id;
+} 
+
 
 function visTabellOrdre(order) {
 
@@ -141,7 +145,7 @@ function visTabellOrdre(order) {
         htmlRowTop += '<td>' + item.OrdreDate + '</td>';
         htmlRowTop += '<td>' + item.BrukerId + '</td>';
         htmlRowTop += '<td>' + item.FilmNavn + '</td>';
-        htmlRowTop += '<td><button id="update">Edit</button></td>';
+        htmlRowTop += '<td><button id="update" onclick="edit(' + item.OrdrerId + ')">Edit</button></td>';
         htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
 
     });

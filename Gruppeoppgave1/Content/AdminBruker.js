@@ -122,41 +122,7 @@
         $("#visTabellBruker").append(htmlRowTop);
     }
 
-    function visTabellBrukere(bruker) {
-
-        $("#visTabellBruker").html("");
-
-        var htmlRowTop = '';
-
-        htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
-        htmlRowTop += '<tr><th scope="col">Epost</th><th scope="col">Fornavn</th><th scope="col">Etternavn</th>';
-        htmlRowTop += '<th scope="col">Addresse</th><th scope="col">Telefon</th><th scope="col">Fødselsdato</th><th scope="col"></th><th scope="col"></th>';
-        htmlRowTop += '</tr></thead><tbody>';
-
-
-        $.each(bruker, function (i, item) {
-
-
-            htmlRowTop += '<tr>';
-            htmlRowTop += '<td>' + item.Epost + '</td>';
-            htmlRowTop += '<td>' + item.Fornavn + '</td>';
-            htmlRowTop += '<td>' + item.Etternavn + '</td>';
-            htmlRowTop += '<td>' + item.Adresse + '</td>';
-          //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
-            htmlRowTop += '<td>' + item.Telefon + '</td>';
-            htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
-            htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
-
-
-        });
-
-        htmlRowTop += '</tbody></table>';
-
-        $("#visTabellBruker").append(htmlRowTop);
-
-
-    }
+    
     
    
 
@@ -172,7 +138,8 @@
 
 })
 function RemoveBrukerButton_Click(val) {
-    var id = parseStrin(val);
+    console.log(val);
+    var id = parseString(val);
    
     $.ajax({
         url: '/Home/DeleteBruker/' + id,
@@ -190,4 +157,39 @@ function RemoveBrukerButton_Click(val) {
             alert("failed");
         }
     });
+}
+function visTabellBrukere(bruker) {
+
+    $("#visTabellBruker").html("");
+
+    var htmlRowTop = '';
+
+    htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
+    htmlRowTop += '<tr><th scope="col">Epost</th><th scope="col">Fornavn</th><th scope="col">Etternavn</th>';
+    htmlRowTop += '<th scope="col">Addresse</th><th scope="col">Telefon</th><th scope="col">Fødselsdato</th><th scope="col"></th><th scope="col"></th>';
+    htmlRowTop += '</tr></thead><tbody>';
+
+
+    $.each(bruker, function (i, item) {
+
+
+        htmlRowTop += '<tr>';
+        htmlRowTop += '<td>' + item.Epost + '</td>';
+        htmlRowTop += '<td>' + item.Fornavn + '</td>';
+        htmlRowTop += '<td>' + item.Etternavn + '</td>';
+        htmlRowTop += '<td>' + item.Adresse + '</td>';
+        //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
+        htmlRowTop += '<td>' + item.Telefon + '</td>';
+        htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
+        htmlRowTop += '<td><button id="update">Edit</button></td>';
+        htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
+
+
+    });
+
+    htmlRowTop += '</tbody></table>';
+
+    $("#visTabellBruker").append(htmlRowTop);
+
+
 }
