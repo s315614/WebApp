@@ -1,6 +1,7 @@
 ﻿using Gruppeoppgave1.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -247,8 +248,81 @@ namespace Gruppeoppgave1.Controllers
             return View(enBruker); 
 
         }*/
+/*
         [HttpPost]
-        public bool DeleteBruker(string id)
+        public bool EditBruker(string id)
+        {
+            try
+            {
+                var db = new DBBruker();
+                db.editBruker(id);
+                return true;
+            }
+            catch(Exception feil)
+            {
+                return false;
+            }
+        }   */
+        [HttpPost, ActionName("EditBruker")]
+        public ActionResult EditBruker(string id)
+        {
+          /*  if (ModelState.IsValid)
+            {
+                var db = new DBContext();
+                db.Entry(id).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AdminPage");
+
+            }*/
+            
+           
+            var db = new DBContext();
+            //Brukere brukerToUpdate = db.Brukere.FirstOrDefault(x=> x.Fornavn.Contains(id));
+            var brukerToUpdate = db.Brukere.Find(id);
+            if(TryUpdateModel(brukerToUpdate, "",
+                new string[] {"Epost", "Etternavn", "Adresse", "Telefon" }))
+            {
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("AdminPage");
+                }
+                catch(Exception feil)
+                {
+
+                }
+            }   
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBruker(string id)
+        {
+            //var db = new DBContext();
+       //     Brukere brukerToDelete = new Brukere() { Fornavn = id };
+         //   db.Entry(brukerToDelete).State = EntityState.Deleted;
+           // db.SaveChanges();
+            try
+            {
+                var db = new DBContext();
+                var brukerToDelete = db.Brukere.Find(id);
+                // Brukere brukerToDelete = new Brukere() { Fornavn = id };
+              //  Brukere brukerToDelete = db.Brukere.Find(id);
+                db.Brukere.Remove(brukerToDelete);
+                db.SaveChanges();
+
+                return RedirectToAction("AdminPage");
+            }
+            catch (Exception feil)
+            {
+               
+            } 
+            return RedirectToAction("AdminPage");
+            
+
+        }
+      /*  public bool DeleteBruker(int? id)
         {
             try
             {
@@ -260,7 +334,7 @@ namespace Gruppeoppgave1.Controllers
             {
                 return false;
             }
-        }
+        } */
 
         [HttpPost]
         public bool slettAdmin(string id)

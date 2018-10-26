@@ -3,7 +3,7 @@
    // alert("Trykk på (Bruker) for å liste ut Brukere! Husk og vent i noen sekunder før listene vises");
 
     // opprett en hendelse på dropdown-listen når siden lastes
-    alert("Tabell reloaded!!!!!");
+   /// alert("Tabell reloaded!!!!!");
     $("#visbrukertabell").click(function () {
         // var id = $(this).val();
 
@@ -21,7 +21,7 @@
             }
         });
     })
-    $("#delete").click(function () {
+   /* $("#delete").click(function () {
         var jsInn = {
             Fornavn: item.Fornavn
         }
@@ -38,7 +38,7 @@
                 alert(x + '\n' + y + '\n' + z);
             }
         });
-    })
+    })*/
     $("#add").click(function () {
 
         // bygg et js objekt fra input feltene
@@ -114,7 +114,7 @@
             //htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
             htmlRowTop += '<td><a data-toggle="modal" data-target="#' + item.Epost + '">Trykk her for pop up!</a></td>'
            // htmlRowTop += '<td><button data-toggle="modal" data-target="#" id="update">TEst edit</button></td>';
-            htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ') >Delete</button></td>';
+            htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(this) >Delete</button></td>';
 
 
         });
@@ -161,10 +161,25 @@
     }
 
 })
+function EditBruker(val) {
+   // window.location = "/Home/EditBruker/" + val;
+    $.ajax({
+        url: '/Home/EditBruker/' + val,
+        type: 'POST',
+        dataType: 'json',
+        success: function (boolean) {
+            if (boolean) {
+                alert("success!");
+            } else {
+                alert("failed!");
+            }
+        },
+    });
+}
 function RemoveBrukerButton_Click(val) {
-    console.log(val);
-    var id = parseString(val);
-   
+  //  console.log(val);
+   // var id = parseString(val);
+    var id = $(val).val();
     $.ajax({
         url: '/Home/DeleteBruker/' + id,
         type: 'POST',
@@ -206,16 +221,16 @@ function visTabellBrukere(bruker) {
         htmlRowTop += '<td>' + item.Telefon + '</td>';
         htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
         htmlRowTop += '<td><button data-toggle="modal" data-target="#'+ item.Fornavn + item.Fødselsdato +'" id="update">Edit</button></td>';
-        htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(' + item.Fornavn + ')">Delete</button></td>';
+        htmlRowTop += '<td><button id="delete" onClick="RemoveBrukerButton_Click(this)">Delete</button></td>';
 
         htmlRowTop += [
             '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
             '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
             //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-            '<div contenteditable="true">'+item.Epost+'</div>',
+            '<div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Epost + '</div><br><div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Etternavn + '</div><br><div contenteditable="true"style="height:30px; width:400px; border-style: solid;">' + item.Adresse + '</div><br><div contenteditable="true" style="height:30px; width:400px;border-style: solid;">' + item.Telefon + '</div>',
             '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
-            '<div class="modal-body"></div> <div class="modal-footer"><h1>'+ "Lag Form her"+'</h1>  <h3>'+ item.Epost +'</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
-            '<button type="button" class="btn btn-primary" onclick="Lage en funksjon til update her!">Save changes</button>         </div>   </div>   </div></div>'
+            '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Epost + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+            '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditBruker(this)">Save changes</button>         </div>   </div>   </div></div>'
         ];
 
     });

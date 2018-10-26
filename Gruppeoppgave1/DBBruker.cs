@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity.Infrastructure;
 
 namespace Gruppeoppgave1
 {
@@ -82,8 +83,22 @@ namespace Gruppeoppgave1
                 }
             }
         }
-                
-        public bool slett(string epost)
+          
+       /* public bool editBruker(string id)
+        {
+            using(var db = new DBContext())
+            {
+                try
+                {
+                    var editObjekt = db.Brukere.Find(id);
+                    if (DbUpdateException)
+                    {
+
+                    }
+                }
+            }
+        }*/
+        public bool slett(int? epost)
         {
             using (var db = new DBContext())
             {
