@@ -92,30 +92,6 @@
         
 
 })
-function deleteValue(val) {
-    //alert(val);
-
-    var id = val;
-
-
-    $.ajax({
-        url: '/Home/slettAdmin/' + id,
-        type: 'POST',
-        dataType: 'json',
-        success: function (boolean) {
-            if (boolean) {
-                alert("Orderet er nå slettet!");
-            } else
-                alert("Feil med å slette orderet");
-        },
-        error: function () {
-            // window.location.replace("/Home/MainPage");
-            //alert("Hvorfor blir function return error? Selvom funksjonen blir kjørt, og vi har slettet orderet!");
-            window.location.reload();
-        }
-    });
-}
-
 
 
 function visTabellAdminer(admin) {

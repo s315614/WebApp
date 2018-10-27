@@ -1,5 +1,31 @@
 ﻿$(function () {
-           
+
+    function VisDropDown(jsKategorier) {
+        var utStreng = "";
+
+        utStreng += "<option>Velg Filmer</option>";
+        for (var i in jsKategorier) {
+            utStreng += "<option value='" + jsKategorier[i].Id + "'>" + jsKategorier[i].Navn + "</option>";
+        }
+        $("#drop").append(utStreng);
+    }
+
+
+        $.ajax({
+            url: '/Home/hentAlleFilmNavn',
+            type: 'GET',
+            dataType: 'json',
+            success: function (jsFilm) {
+                VisDropDown(jsFilm);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+
+
+
+
     $("#visordretabell").click(function () {
         // var id = $(this).val();
 
@@ -7,8 +33,8 @@
             url: '/Home/hentAlleOrdre/',
             type: 'GET',
             dataType: 'json',
-            success: function (Home) {
-                visTabellOrdre(Home);
+            success: function (ordertabell) {
+                visTabellOrdre(ordertabell)
 
             },
             error: function (x, y, z) {
@@ -22,8 +48,8 @@
         // bygg et js objekt fra input feltene
         var jsInn = {
             OrdreDate: $("#ordredate").val(),
-            Epost: $("#brukerid").val(),
-            Id: $("#dropDown").val()
+            BrukerId: $("#brukerid").val(),
+            FilmId: $("#drop").val()
             //BildeTekst: "Hei",
         }
 
@@ -33,15 +59,29 @@
             data: JSON.stringify(jsInn),
             contentType: "application/json;charset=utf-8",
             success: function (ok) {
-                show_data();
                 alert("submit successfully");
                 // kunne ha feilhåndtert evt. feil i registreringen her
-                window.location.reload();
+                //window.location.reload();
                 // reload av vinduet må sje her altså etter at kallet har returnert
             },
             error: function (x, y, z) {
-               // alert("failed");
-                alert(x + '\n' + y + '\n' + z);
+                // alert("failed");
+                // alert(x + '\n' + y + '\n' + z);
+                alert("Brukeren ble ikke registrert!");
+            }
+        });
+
+        $.ajax({
+            url: '/Home/hentAlleOrdre/',
+            type: 'GET',
+            dataType: 'json',
+            success: function (Home) {
+                visTabellOrdre(Home);
+
+            },
+            error: function (x, y, z) {
+
+                alert("Kunne ikke hente Data");
             }
         });
     })
@@ -60,8 +100,15 @@
         });
     });
 
-     
 
+
+    function deleteValue() {
+        alert("Du trykket på delete");
+    }
+
+    function edit(Id) {
+        window.location = "/Home/Edit/" + Id;
+    }
 
     function visInfoDynamisk(order) {
         $("#visTabellOrdrer").html("");
@@ -80,12 +127,12 @@
             htmlRowTop += '<tr>';
             htmlRowTop += '<td>' + item.OrdrerId + '</td>';
             htmlRowTop += '<td>' + item.OrdreDate + '</td>';
-            htmlRowTop += '<td>' + item.BrukerId + '</td>';
+            htmlRowTop += '<td>' + item.BrukerId + '</td>'; 0
             htmlRowTop += '<td>' + item.FilmNavn + '</td>';
 
-            htmlRowTop += '<td><button id="update" class="btn btn-primary onclick="">Edit</button></td>';
-            htmlRowTop += '<td><button id="delete" class="btn btn-danger" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
-            
+            htmlRowTop += '<td><button id="update">Edit</button></td>';
+            htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
+            s
 
         });
 
@@ -97,32 +144,37 @@
 
 
 function deleteValue(val) {
-    //alert(val);
+
 
     var id = parseInt(val);
-   
 
     $.ajax({
-        url: '/Home/slettOrder/'+ id,
+        url: '/Home/slettOrder/' + id,
         type: 'POST',
         dataType: 'json',
         success: function (boolean) {
             if (boolean) {
                 alert("Orderet er nå slettet!");
-            } else 
-            alert("Feil med å slette orderet");
+            } else
+                alert("Feil med å slette orderet");
         },
         error: function () {
-           // window.location.replace("/Home/MainPage");
-            //alert("Hvorfor blir function return error? Selvom funksjonen blir kjørt, og vi har slettet orderet!");
-            window.location.reload();
+            $.ajax({
+                url: '/Home/hentAlleOrdre/',
+                type: 'GET',
+                dataType: 'json',
+                success: function (Home) {
+                    visTabellOrdre(Home);
+
+                },
+                error: function (x, y, z) {
+
+                    alert("Kunne ikke hente Data");
+                }
+            });
         }
     });
 }
-
-function edit(Id) {
-    window.location = "/Home/Edit/" + Id;
-} 
 
 
 function visTabellOrdre(order) {
@@ -145,8 +197,8 @@ function visTabellOrdre(order) {
         htmlRowTop += '<td>' + item.OrdreDate + '</td>';
         htmlRowTop += '<td>' + item.BrukerId + '</td>';
         htmlRowTop += '<td>' + item.FilmNavn + '</td>';
-        htmlRowTop += '<td><button id="update" class="btn btn-primary onclick="">Edit</button></td>';
-        htmlRowTop += '<td><button id="delete" class="btn btn-danger" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
+        htmlRowTop += '<td><button id="update">Edit</button></td>';
+        htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
 
     });
 
@@ -154,5 +206,11 @@ function visTabellOrdre(order) {
 
     $("#visTabellOrdrer").append(htmlRowTop);
 }
+
+
+
+
+
+
 
 
