@@ -30,8 +30,8 @@ namespace Gruppeoppgave1
         {
             using (var db = new DBContext())
             {
-
-                List<Order> hentetOrdere = db.Ordrer.Where(k => k.BrukereId.Epost == id).Select(n => new Order
+                List<Order> hentetOrdere = db.Ordrer.Where(k => k.BrukereId.Epost.Contains(id)).Select(n => new Order
+                //List<Order> hentetOrdere = db.Ordrer.Where(k => k.BrukereId.Epost == id).Select(n => new Order
                 {
                     OrdrerId = n.OrdrerId,
                     OrdreDate = n.OrdreDate,

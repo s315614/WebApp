@@ -80,12 +80,12 @@
             htmlRowTop += '<tr>';
             htmlRowTop += '<td>' + item.OrdrerId + '</td>';
             htmlRowTop += '<td>' + item.OrdreDate + '</td>';
-            htmlRowTop += '<td>' + item.BrukerId + '</td>';0
+            htmlRowTop += '<td>' + item.BrukerId + '</td>';
             htmlRowTop += '<td>' + item.FilmNavn + '</td>';
 
-            htmlRowTop += '<td><button id="update" onclick="">Edit</button></td>';
-            htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
-            s
+            htmlRowTop += '<td><button id="update" class="btn btn-primary onclick="">Edit</button></td>';
+            htmlRowTop += '<td><button id="delete" class="btn btn-danger" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
+            
 
         });
 
@@ -145,8 +145,8 @@ function visTabellOrdre(order) {
         htmlRowTop += '<td>' + item.OrdreDate + '</td>';
         htmlRowTop += '<td>' + item.BrukerId + '</td>';
         htmlRowTop += '<td>' + item.FilmNavn + '</td>';
-        htmlRowTop += '<td><button id="update" onclick="">Edit</button></td>';
-        htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
+        htmlRowTop += '<td><button id="update" class="btn btn-primary onclick="">Edit</button></td>';
+        htmlRowTop += '<td><button id="delete" class="btn btn-danger" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
 
     });
 

@@ -503,11 +503,11 @@ namespace Gruppeoppgave1.Controllers
             return json;
         }
 
-        public string hentBrukerInneholder(string Epost)
+        public string hentBrukerInneholder(string id)
         {
             var db = new DBBruker();
 
-            List<Bruker> enBruker = db.hentBrukerInnhold(Epost);
+            List<Bruker> enBruker = db.hentBrukerInnhold(id);
 
             if (enBruker == null)
             {
@@ -524,11 +524,11 @@ namespace Gruppeoppgave1.Controllers
             return json;
         }
 
-        public string hentOrderInneholder(string Epost)
+        public string hentOrderInneholder(string id)
         {
             var db = new DBOrder();
 
-            List<Order> enOrder = db.hentOrderInnhold(Epost);
+            List<Order> enOrder = db.hentOrderInnhold(id);
 
             if (enOrder == null)
             {

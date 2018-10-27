@@ -85,6 +85,23 @@
             input[id=searchBox1]:focus {
                 width: 100%;
             }
+        input[id=searchBox3] {
+            width: 75px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            // padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[id=searchBox3]:focus {
+            width: 100%;
+        }
 
         input[id=searchBox2] {
             width: 75px;
@@ -184,7 +201,7 @@
                             <td><input id="fornavn" style="width:130px;" type="text" name="Fornavn" placeholder="Fornavn"></td>
                             <td><input id="etternavn" style="width:130px;" type="text" name="Etternavn" placeholder="Etternavn"></td>
                             <td><input id="adresse" style="width:130px;" type="text" name="Adresse" placeholder="Adresse"></td>
-                            <td><input id="passord" style="width:130px;" type="text" name="Passord" placeholder="Passord"></td>
+                            <td><input id="passord" style="width:130px;" type="text" name="Passord" placeholder="Passord"></td> 
                             <td><input id="telefon" style="width:130px;" type="number" name="Telefon" placeholder="Telefon"></td>
                             <td><input id="fødselsdato" style="width:130px;" type="date" name="Fødselsdato" placeholder="Fødselsdato"></td>
                             <td><button id="add" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>

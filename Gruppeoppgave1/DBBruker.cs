@@ -29,12 +29,12 @@ namespace Gruppeoppgave1
                 return alleBrukere;
             }
         }
-        public List<Bruker> hentBrukerInnhold(string Epost)
+        public List<Bruker> hentBrukerInnhold(string id)
         {
             using (var db = new DBContext())
             {
 
-                List<Bruker> hentetBrukere = db.Brukere.Where(k => k.Fornavn.Contains(Epost)).Select(n => new Bruker
+                List<Bruker> hentetBrukere = db.Brukere.Where(k => k.Fornavn.Contains(id)).Select(n => new Bruker
                 {
                     Epost = n.Epost,
                     Fornavn = n.Fornavn,
