@@ -1,4 +1,5 @@
-﻿using Gruppeoppgave1.Models;
+﻿using Gruppeoppgave1.BLL;
+using Gruppeoppgave1.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Gruppeoppgave1.Controllers
             }
             
 
-            var db = new DBFilmer();
+            var db = new FilmerBLL();
             List<Film> alleFilmer = db.alleFilmer();
             return View(alleFilmer);
 
@@ -84,8 +85,6 @@ namespace Gruppeoppgave1.Controllers
 
         }
 
-
-
         public ActionResult Registry()
         {
             ViewBag.finnesAllerede = false;
@@ -97,7 +96,7 @@ namespace Gruppeoppgave1.Controllers
         public ActionResult Registry(Bruker innBruker)
         {
             ViewBag.finnesAllerede = false;
-            var db = new DBBruker();
+            var db = new BrukerBLL();
             bool OK = db.lagreBruker(innBruker);
             if (OK)
             {
@@ -113,14 +112,14 @@ namespace Gruppeoppgave1.Controllers
 
         public string register(Film innKunde)
         {
-            var db = new DBFilmer();
+            var db = new FilmerBLL();
             db.lagreFilm(innKunde);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
         public string registerbruker(Bruker innBruker)
         {
-            var db = new DBBruker();
+            var db = new BrukerBLL();
             db.lagreBruker(innBruker);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
@@ -135,7 +134,7 @@ namespace Gruppeoppgave1.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var db = new DBFilmer();
+                    var db = new FilmerBLL();
                     List<Film> alleFilmer = db.alleFilmer();
                     ViewBag.message =  epost;
                     return View(alleFilmer);
@@ -155,7 +154,7 @@ namespace Gruppeoppgave1.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var db = new DBOrder();
+                    var db = new OrdreBLL();
                     List<Order> alleOrdere = db.hentOrderInnhold(epost);
                     if(alleOrdere == null)
                     {
@@ -178,7 +177,7 @@ namespace Gruppeoppgave1.Controllers
                 if (loggetInn)
                 {
                     string epost = (string)Session["BrukerId"];
-                    var db = new DBFilmer();
+                    var db = new FilmerBLL();
                     Film funnetFilm = db.hentFilm(Id);
                     if (funnetFilm == null)
                     {
@@ -196,10 +195,6 @@ namespace Gruppeoppgave1.Controllers
             }
 
             return RedirectToAction("Index");
-
-           
-
-           
         }
 
         [HttpPost]
@@ -236,7 +231,6 @@ namespace Gruppeoppgave1.Controllers
             return View();
 
         }
-
 
         public ActionResult Loggut()
         {
@@ -291,7 +285,7 @@ namespace Gruppeoppgave1.Controllers
 
         public string hentFilmInneholder(string id)
         {
-            var db = new DBFilmer();
+            var db = new FilmerBLL();
 
             List<Film> enFilm = db.hentFilmInnhold(id);
 
@@ -312,7 +306,7 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentBrukerInneholder(string Epost)
         {
-            var db = new DBBruker();
+            var db = new BrukerBLL();
 
             List<Bruker> enBruker = db.hentBrukerInnhold(Epost);
 
@@ -330,7 +324,7 @@ namespace Gruppeoppgave1.Controllers
 
         public string hentAlleFilmer()
         {
-            var db = new DBFilmer();
+            var db = new FilmerBLL();
             List<Film> alleFilmer = db.alleFilmer();
 
             if (alleFilmer == null) return null;
@@ -343,7 +337,7 @@ namespace Gruppeoppgave1.Controllers
 
         public string hentAlleBrukere()
         {
-            var db = new DBBruker();
+            var db = new BrukerBLL();
             List<Bruker> alleBrukere = db.alleBrukere();
 
             if (alleBrukere == null) return null;
@@ -355,7 +349,7 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentAlleAdminer()
         {
-            var db = new DBAdminer();
+            var db = new AdminerBLL();
             List<Admin> alleAdminer = db.alleAdminer();
 
             if (alleAdminer == null) return null;
@@ -367,7 +361,7 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentAlleOrdre()
         {
-            var db = new DBOrder();
+            var db = new OrdreBLL();
             List<Order> alleOrdre = db.alleOrdre();
 
             if (alleOrdre == null) return null;
@@ -389,7 +383,7 @@ namespace Gruppeoppgave1.Controllers
 
         public string hentAlleNavn()
         {
-            var db = new DBKategori();
+            var db = new KategoriBLL();
             List<Katagori> alleKategorier = db.AlleKategorier();
             var alleNavn = new List<jsKategor>();
             foreach (Katagori k in alleKategorier)
@@ -406,7 +400,7 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentKatinfo(int id)
         {
-            var db = new DBFilmer();
+            var db = new FilmerBLL();
             List<Film> alleFilmerKategori = db.hentFilmKategori(id);
 
             if (alleFilmerKategori == null)

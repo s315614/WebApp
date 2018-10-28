@@ -509,3 +509,7 @@ C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csp
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csproj.CopyComplete
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.dll
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.pdb
+C:\Users\irfan\IdeaProjects\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojAssemblyReference.cache
+C:\Users\irfan\IdeaProjects\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csproj.CoreCompileInputs.cache
+C:\Users\irfan\IdeaProjects\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.dll
+C:\Users\irfan\IdeaProjects\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.pdb

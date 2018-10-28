@@ -1,0 +1,6 @@
+C:\Users\irfan\IdeaProjects\WebApp\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\irfan\IdeaProjects\WebApp\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\irfan\IdeaProjects\WebApp\Model\bin\Debug\Model.dll
+C:\Users\irfan\IdeaProjects\WebApp\Model\bin\Debug\Model.pdb
+C:\Users\irfan\IdeaProjects\WebApp\Model\obj\Debug\Model.dll
+C:\Users\irfan\IdeaProjects\WebApp\Model\obj\Debug\Model.pdb
