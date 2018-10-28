@@ -368,32 +368,53 @@ namespace Gruppeoppgave1.Controllers
             
         }
 
-       /* public ActionResult sletting(string Epost)
-=======
-        public ActionResult DeleteBruker(string id, Bruker slett)
->>>>>>> 54a533f18853c85177f3c12f75966d8a9e6f2cd0
+
+        [HttpPost]
+        public bool slettadminbruker(int id)
         {
-            var brukerDB = new DBBruker();
-            bool slettOK = brukerDB.slett(id);
-            if (slettOK)
+            try
             {
-                return RedirectToAction("AdminPage");
+                var db = new DBBruker();
+
+                var hentetBruker = db.finnBrukerMedTelefon(id);
+                var epost = hentetBruker.Epost;
+
+                db.slett(epost);
+                return true;
             }
-            return View();
+            catch (Exception feil)
+            {
+                return false;
+            }
+
         }
 
-       /* public void RemoveBrukerButton_Click(object senders, EventArgs e)
-        {
-            string epost = (string)Session["BrukerId"];
-            using ( var db = new DBContext())
-            {
-                var brukere = (from c in db.Brukere where c.Epost == epost select c).FirstOrDefault();
-              //  var brukere = db.Brukere.FirstOrDefault(b => b.Epost == epost);
-                db.Brukere.Remove(brukere);
-                db.SaveChanges();
-            }
-          //  return RedirectToAction("AdminPage");
-        }*/
+        /* public ActionResult sletting(string Epost)
+ =======
+         public ActionResult DeleteBruker(string id, Bruker slett)
+ >>>>>>> 54a533f18853c85177f3c12f75966d8a9e6f2cd0
+         {
+             var brukerDB = new DBBruker();
+             bool slettOK = brukerDB.slett(id);
+             if (slettOK)
+             {
+                 return RedirectToAction("AdminPage");
+             }
+             return View();
+         }
+
+        /* public void RemoveBrukerButton_Click(object senders, EventArgs e)
+         {
+             string epost = (string)Session["BrukerId"];
+             using ( var db = new DBContext())
+             {
+                 var brukere = (from c in db.Brukere where c.Epost == epost select c).FirstOrDefault();
+               //  var brukere = db.Brukere.FirstOrDefault(b => b.Epost == epost);
+                 db.Brukere.Remove(brukere);
+                 db.SaveChanges();
+             }
+           //  return RedirectToAction("AdminPage");
+         }*/
         [HttpPost]
         public ActionResult Payment(Film innfilm)
         {

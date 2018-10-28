@@ -53,6 +53,39 @@ namespace Gruppeoppgave1
                 return hentetBrukere;
             }
         }
+
+        public Bruker finnBrukerMedTelefon(int telefon)
+        {
+            var telefonString = telefon.ToString();
+            using (var db = new DBContext())
+            {
+                Brukere hentetbruker = db.Brukere.FirstOrDefault(k => k.Telefon == telefonString);
+
+                if (hentetbruker == null)
+                {
+                    return null;
+                }
+
+                var bruker = new Bruker()
+                {
+                    Epost = hentetbruker.Epost,
+                    Fornavn = hentetbruker.Fornavn,
+                    Etternavn = hentetbruker.Etternavn,
+                    Adresse = hentetbruker.Adresse,
+                    PassordByte = hentetbruker.Passord,
+                    Telefon = hentetbruker.Telefon,
+                    Fødselsdato = hentetbruker.Fødselsdato
+                };
+              
+
+                return bruker;
+
+
+
+            };
+
+        }
+
         public bool lagreBruker(Bruker innBruker)
         {
 
@@ -98,13 +131,13 @@ namespace Gruppeoppgave1
                 }
             }
         }*/
-        public bool slett(int? epost)
+        public bool slett(string epost)
         {
             using (var db = new DBContext())
             {
                 try
                 {
-                    var slettObjekt = db.Brukere.Find(epost);
+                    var slettObjekt = db.Brukere.Find("Admin@gmail.com");
                     db.Brukere.Remove(slettObjekt);
                     db.SaveChanges();
                     return true;

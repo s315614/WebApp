@@ -102,10 +102,6 @@
 
 
 
-    function deleteValue() {
-        alert("Du trykket på delete");
-    }
-
     function edit(Id) {
         window.location = "/Home/Edit/" + Id;
     }

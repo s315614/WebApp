@@ -1,9 +1,5 @@
 ﻿$(function () {
     
-   // alert("Trykk på (Bruker) for å liste ut Brukere! Husk og vent i noen sekunder før listene vises");
-
-    // opprett en hendelse på dropdown-listen når siden lastes
-   //alert("Tabell reloaded!!!!!");
     $("#visbrukertabell").click(function () {
         // var id = $(this).val();
 
@@ -21,24 +17,7 @@
             }
         });
     })
-   /* $("#delete").click(function () {
-        var jsInn = {
-            Fornavn: item.Fornavn
-        }
-        $.ajax({
-            url: '/Home/slettBruker',
-            type: 'POST',
-            data: JSON.stringify(jsInn),
-            contentType: "application/json;charset=utf-8",
-            success: function (ok) {
-                window.location.reload;
-            },
-            error: function (x, y, z) {
-                //alert("failed");
-                alert(x + '\n' + y + '\n' + z);
-            }
-        });
-    })*/
+
     $("#add").click(function () {
 
         // bygg et js objekt fra input feltene
@@ -60,11 +39,20 @@
             data: JSON.stringify(jsInn),
             contentType: "application/json;charset=utf-8",
             success: function (ok) {
-                show_data();
                 alert("submit successfully");
-                // kunne ha feilhåndtert evt. feil i registreringen her
-                window.location.reload();
-                // reload av vinduet må sje her altså etter at kallet har returnert
+                $.ajax({
+                    url: '/Home/hentAlleBrukere/',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (Home) {
+                        visTabellBrukere(Home);
+
+                    },
+                    error: function (x, y, z) {
+
+                        alert("Kunne ikke hente Data");
+                    }
+                });
             },
             error: function (x, y, z) {
                 //alert("failed");
@@ -88,6 +76,8 @@
             }
         });
     });
+
+})
     
     function visInfoDynamisk(bruker) {
         $("#visTabellBruker").html("");
@@ -114,7 +104,7 @@
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
            // htmlRowTop += '<td><a data-toggle="modal" data-target="#' + item.Epost + '">Trykk her for pop up!</a></td>';
             htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.Fornavn + item.Fødselsdato + '" id="update" class="btn btn-primary">Edit</button></td>';
-            htmlRowTop += '<td><button id="delete" class="btn btn-danger onClick="RemoveBrukerButton_Click(this)">Delete</button></td>';
+            htmlRowTop += '<td><button id="deleteBruker" class="btn btn-danger" onclick="deletebruker(' + item.Telefon +')">Delete</button></td>';
 
             htmlRowTop += [
                 '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
@@ -155,10 +145,6 @@
         $("#visTabellBruker").append(htmlRowTop);
     }
 
-    
-    
-   
-
     function VisDropDown(jsKategorier) {
         var utStreng = "";
 
@@ -169,7 +155,8 @@
         $("#drop").append(utStreng);
     }
 
-})
+
+
 function EditBruker(val) {
    // window.location = "/Home/EditBruker/" + val;
     
@@ -186,27 +173,7 @@ function EditBruker(val) {
         },
     });
 }
-function RemoveBrukerButton_Click(val) {
-  //  console.log(val);
-   // var id = parseString(val);
-    var id = $(val).val();
-    $.ajax({
-        url: '/Home/DeleteBruker/' + id,
-        type: 'POST',
-        dataType: 'json',
-        success: function (boolean) {
-            if (boolean) {
-                alert("Bruker er nå slettet!");
-            } else {
-                alert("Feil med å slette Bruker");
-            }
 
-        },
-        Error: function () {
-            alert("failed");
-        }
-    });
-}
 function visTabellBrukere(bruker) {
 
     $("#visTabellBruker").html("");
@@ -231,7 +198,7 @@ function visTabellBrukere(bruker) {
         htmlRowTop += '<td>' + item.Telefon + '</td>';
         htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
         htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.Fornavn + item.Fødselsdato +'" id="update" class="btn btn-primary">Edit</button></td>';
-        htmlRowTop += '<td><button id="delete" class="btn btn-danger onClick="RemoveBrukerButton_Click(this)">Delete</button></td>';
+        htmlRowTop += '<td><button id="deleteBruker" class="btn btn-danger" onclick="deletebruker('+item.Telefon+')">Delete</button></td>';
 
         htmlRowTop += [
             '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
@@ -250,4 +217,36 @@ function visTabellBrukere(bruker) {
     $("#visTabellBruker").append(htmlRowTop);
 
 
+}
+
+
+
+function deletebruker(telefon) {
+    alert(telefon);
+
+    var id = parseInt(telefon);
+
+    $.ajax({
+        url: '/Home/slettadminbruker/' + id,
+        type: 'POST',
+        dataType: 'json',
+        success: function (boolean) {
+
+        },
+        error: function () {
+            $.ajax({
+                url: '/Home/hentAlleBrukere/',
+                type: 'GET',
+                dataType: 'json',
+                success: function (Home) {
+                    visTabellBrukere(Home);
+
+                },
+                error: function (x, y, z) {
+
+                    alert("Kunne ikke hente Data");
+                }
+            });
+        }
+    });
 }

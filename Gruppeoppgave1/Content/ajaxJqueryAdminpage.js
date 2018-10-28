@@ -87,7 +87,7 @@
 
         htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
         htmlRowTop += '<tr><th scope="col">FilmId</th><th scope="col">Navn</th><th scope="col">Beskrivelse</th>';
-        htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th><th scope="col"></th>';
+        htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th>';
         htmlRowTop += '</tr></thead><tbody>';
 
 
@@ -101,7 +101,7 @@
             htmlRowTop += '<td>' + item.Pris + '</td>';
             htmlRowTop += '<td>' + item.KategoriNavn + '</td>';
             htmlRowTop += '<td><button id="update" class="btn btn-primary" data-toggle="modal" data-target="#' + item.Id + item.Navn + '">Edit</button></td>';
-            htmlRowTop += '<td><button id="update" class="btn btn-danger">Delete</button></td>';
+            
             htmlRowTop += '</tr>';
 
             htmlRowTop += [
@@ -132,7 +132,7 @@
                
         htmlRowTop +='<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
         htmlRowTop += '<tr><th scope="col">FilmId</th><th scope="col">Navn</th><th scope="col">Beskrivelse</th>';
-        htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th><th scope="col"></th>';
+        htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th>';
         htmlRowTop += '</tr></thead><tbody>';
         
 
@@ -146,7 +146,6 @@
                htmlRowTop += '<td>' + item.Pris + '</td>';
                htmlRowTop += '<td>' + item.KategoriNavn + '</td>';
                htmlRowTop += '<td><button id="update" class="btn btn-primary" data-toggle="modal" data-target="#' + item.Id + item.Navn + '">Edit</button></td>';
-               htmlRowTop += '<td><button id="update" class="btn btn-danger">Delete</button></td>';
                htmlRowTop += '</tr>';
 
                htmlRowTop += [
