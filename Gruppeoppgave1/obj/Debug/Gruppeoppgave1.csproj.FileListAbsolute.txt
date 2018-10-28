@@ -580,3 +580,4 @@ C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.c
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.dll
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.pdb
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojAssemblyReference.cache
+C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojResolveAssemblyReference.cache

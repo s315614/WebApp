@@ -88,7 +88,25 @@ namespace Gruppeoppgave1
         }
 
 
+        public bool endreAdmin(Admin admin)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    var endreObjekt = db.Adminer.Find(admin.Id);
+                    
+                    endreObjekt.Navn = admin.Navn;
 
+                    db.SaveChanges();
+                }
+                catch (Exception feil)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
 
 
         public bool slett(int id)

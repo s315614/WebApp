@@ -100,11 +100,11 @@
         });
     });
 
-
-
-    function edit(Id) {
-        window.location = "/Home/Edit/" + Id;
+    function test() {
+        alert("yes!");
     }
+
+   
 
     function visInfoDynamisk(order) {
         $("#visTabellOrdrer").html("");
@@ -123,22 +123,29 @@
             htmlRowTop += '<tr>';
             htmlRowTop += '<td>' + item.OrdrerId + '</td>';
             htmlRowTop += '<td>' + item.OrdreDate + '</td>';
-            htmlRowTop += '<td>' + item.BrukerId + '</td>'; 
+            htmlRowTop += '<td>' + item.BrukerId + '</td>';
             htmlRowTop += '<td>' + item.FilmNavn + '</td>';
-
             htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.OrdrerId + item.FilmNavn + '" id="update" class="btn btn-primary">Edit</button></td>';
             htmlRowTop += '<td><button id="delete" class="btn btn-danger" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
-            
-            htmlRowTop += [
-                '<div class="modal fade" id="' + item.OrdrerId + item.FilmNavn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">' +
-                '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>' +
-                //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>' +
-                '<div contenteditable="true" style=" margin: 10px; height:30px; width:400px; border-style: solid;">' + item.OrdreDate + '</div><br><div contenteditable="true" style="margin: 10px; height:30px; width:400px; border-style: solid;">' + item.BrukerId + '</div><br><div contenteditable="true"style=" margin: 10px; height:30px; width:400px; border-style: solid;">' + item.FilmNavn + '</div>' +
 
-                '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.OrdrerId + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
-                '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="">Save changes</button>         </div>   </div>   </div></div>'
-            ];
+            htmlRowTop += '<div class="modal fade" id="' + item.OrdrerId + item.FilmNavn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">';
+            htmlRowTop += '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>';
+
+
+            htmlRowTop += '<div class="modal-body">';
+
+            htmlRowTop += '<span style="font-size: 20px">Order dato</span><br/>';
+            htmlRowTop += '<input type="text" id="orderDato" value="' + item.OrdreDate + '"><br/>';
+            htmlRowTop += '<span style="font-size: 20px">Epost</span><br/>';
+            htmlRowTop += ' <input type="text" id="orderEpost" value="' + item.BrukerId + '"><br/>';
+            htmlRowTop += '<span style="font-size: 20px">Film</span><br/>';
+            htmlRowTop += '<input type="text" id="orderFilmNavn" value="' + item.FilmNavn + '"><br/>';
+
+
+
+            htmlRowTop += '</div >';
+            htmlRowTop += '<div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+            htmlRowTop += '<button  id="EditAdmin" type="button" class="btn btn-primary" onclick="test()">Save admin</button>         </div>   </div>   </div></div>';
         });
 
         htmlRowTop += '</tbody></table>';
@@ -205,16 +212,25 @@ function visTabellOrdre(order) {
         htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.OrdrerId + item.FilmNavn + '" id="update" class="btn btn-primary">Edit</button></td>';
         htmlRowTop += '<td><button id="delete" class="btn btn-danger" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
 
-        htmlRowTop += [
-            '<div class="modal fade" id="' + item.OrdrerId + item.FilmNavn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">'+
-            '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>'+
-            //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>'+
-            '<div contenteditable="true" style=" margin: 10px; height:30px; width:400px; border-style: solid;">' + item.OrdreDate + '</div><br><div contenteditable="true" style="margin: 10px; height:30px; width:400px; border-style: solid;">' + item.BrukerId + '</div><br><div contenteditable="true"style=" margin: 10px; height:30px; width:400px; border-style: solid;">' + item.FilmNavn + '</div>'+
-            
-            '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.OrdrerId + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
-            '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="">Save changes</button>         </div>   </div>   </div></div>'
-        ];
+        htmlRowTop += '<div class="modal fade" id="' + item.OrdrerId + item.FilmNavn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">';
+        htmlRowTop += '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>';
+       
+
+
+        htmlRowTop += '<div class="modal-body">';
+
+        htmlRowTop += '<span style="font-size: 20px">Order dato</span><br/>';
+        htmlRowTop += '<input type="text" id="orderDato" value="' + item.OrdreDate + '"><br/>';
+        htmlRowTop += '<span style="font-size: 20px">Epost</span><br/>';
+        htmlRowTop += ' <input type="text" id="orderEpost" value="' + item.BrukerId + '"><br/>';
+        htmlRowTop += '<span style="font-size: 20px">Film</span><br/>';
+        htmlRowTop += '<input type="text" id="orderFilmNavn" value="' + item.FilmNavn + '"><br/>';
+
+        
+
+        htmlRowTop += '</div >';
+        htmlRowTop +='<div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+        htmlRowTop += '<button  id="EditAdmin" type="button" class="btn btn-primary" onclick="test()">Save Admin</button>         </div>   </div>   </div></div>';
     });
 
     htmlRowTop += '</tbody></table>';

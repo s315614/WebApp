@@ -131,13 +131,15 @@ namespace Gruppeoppgave1
                 }
             }
         }*/
-        public bool slett(string epost)
+        public bool slett()
         {
             using (var db = new DBContext())
             {
                 try
                 {
                     var slettObjekt = db.Brukere.Find("Admin@gmail.com");
+                    //db.Adminer.Remove(slettObjekt);
+                    //var slettObjekt = db.Brukere.Find("Admin@gmail.com");
                     db.Brukere.Remove(slettObjekt);
                     db.SaveChanges();
                     return true;

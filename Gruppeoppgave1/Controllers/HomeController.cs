@@ -133,13 +133,21 @@ namespace Gruppeoppgave1.Controllers
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
-    /*    public string slettBruker(string utBruker)
+
+        public string updateAdmin(Admin innAdmin)
         {
-            var db = new DBBruker();
-            db.slett(utBruker);
+            var db = new DBAdminer();
+            db.endreAdmin(innAdmin);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
-        }*/
+        }
+        /*    public string slettBruker(string utBruker)
+            {
+                var db = new DBBruker();
+                db.slett(utBruker);
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize("OK");
+            }*/
         public string registerorder(Order innOrder)
         {
             var db = new DBOrder();
@@ -376,10 +384,8 @@ namespace Gruppeoppgave1.Controllers
             {
                 var db = new DBBruker();
 
-                var hentetBruker = db.finnBrukerMedTelefon(id);
-                var epost = hentetBruker.Epost;
 
-                db.slett(epost);
+                db.slett();
                 return true;
             }
             catch (Exception feil)

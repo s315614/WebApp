@@ -91,6 +91,8 @@
         htmlRowTop += '</tr></thead><tbody>';
 
 
+
+
         $.each(bruker, function (i, item) {
 
 
@@ -99,49 +101,38 @@
             htmlRowTop += '<td>' + item.Fornavn + '</td>';
             htmlRowTop += '<td>' + item.Etternavn + '</td>';
             htmlRowTop += '<td>' + item.Adresse + '</td>';
-          //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
             htmlRowTop += '<td>' + item.Telefon + '</td>';
             htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
-           // htmlRowTop += '<td><a data-toggle="modal" data-target="#' + item.Epost + '">Trykk her for pop up!</a></td>';
-            htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.Fornavn + item.Fødselsdato + '" id="update" class="btn btn-primary">Edit</button></td>';
-            htmlRowTop += '<td><button id="deleteBruker" class="btn btn-danger" onclick="deletebruker(' + item.Telefon +')">Delete</button></td>';
 
-            htmlRowTop += [
-                '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">'+
-                '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>'+
-                //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>'+
-                '<div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Epost + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Etternavn + '</div><br><div contenteditable="true"style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Adresse + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px;border-style: solid;">' + item.Telefon + '</div>'+
-                //'<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
-                '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Epost + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
-                '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditBruker(this)">Save changes</button>         </div>   </div>   </div></div>'
-            ];
+            htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.Navn + '" id="update" class="btn btn-primary">Edit</button></td>';
+            htmlRowTop += '<td><button id="delete" class="btn btn-danger" onclick="deletebruker(' + item.Telefon +')">Delete</button></td></tr>';
+
+            htmlRowTop += '<div class="modal fade" id="' + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">';
+            htmlRowTop += '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>';
+
+            htmlRowTop += '<div class="modal-body">';
+
+            htmlRowTop += '<span style="font-size: 20px">Epost</span><br/>';
+            htmlRowTop += '<input type="text" id="orderDato" value="' + item.Epost + '"><br/>';
+            htmlRowTop += '<span style="font-size: 20px">Fornavn</span><br/>';
+            htmlRowTop += '<input type="text" id="orderDato" value="' + item.Fornavn + '"><br/>';
+            htmlRowTop += '<span style="font-size: 20px">Etternavn</span><br/>';
+            htmlRowTop += '<input type="text" id="orderDato" value="' + item.Etternavn + '"><br/>';
+            htmlRowTop += '<span style="font-size: 20px">Adresse</span><br/>';
+            htmlRowTop += '<input type="text" id="orderDato" value="' + item.Adresse + '"><br/>';
+            htmlRowTop += '<span style="font-size: 20px">Telefon</span><br/>';
+            htmlRowTop += '<input type="text" id="orderDato" value="' + item.Telefon + '"><br/>';
+            htmlRowTop += '<span style="font-size: 20px">Fødselsdato</span><br/>';
+            htmlRowTop += '<input type="text" id="orderDato" value="' + item.Fødselsdato + '"><br/>';
+
+
+            htmlRowTop += '</div >';
+            htmlRowTop += '<div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+            htmlRowTop += '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditBruker(this)">Save changes</button>         </div>   </div>   </div></div>';
+
 
         });
-        /*
-        htmlRowTop += '</tbody></table>';
-        htmlRowTop += [
-            '<div class="modal fade" id="' + item.Epost + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">',
-            '<div class="modal-dialog" role="document">',
-            '   <div class="modal-content">',
-            '      <div class="modal-header">',
-            '         <h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
-            '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">',
-            '           <span aria-hidden="true">&times;</span>',
-            '      </button>',
-            ' </div>',
-            '<div class="modal-body">',
-            ' </div>',
-            '      <div class="modal-footer">',
-            '           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
-            '<button type="button" class="btn btn-primary" onclick="toLogin()">Buy</button>',
-
-            '         </div>',
-            '      </div>',
-            '   </div>',
-            '</div>'
-        ];
-        */
+     
 
         $("#visTabellBruker").append(htmlRowTop);
     }
@@ -186,7 +177,6 @@ function visTabellBrukere(bruker) {
     htmlRowTop += '<th scope="col">Addresse</th><th scope="col">Telefon</th><th scope="col">Fødselsdato</th><th scope="col"></th><th scope="col"></th>';
     htmlRowTop += '</tr></thead><tbody>';
 
-
     $.each(bruker, function (i, item) {
 
 
@@ -195,22 +185,35 @@ function visTabellBrukere(bruker) {
         htmlRowTop += '<td>' + item.Fornavn + '</td>';
         htmlRowTop += '<td>' + item.Etternavn + '</td>';
         htmlRowTop += '<td>' + item.Adresse + '</td>';
-        //  htmlRowTop += '<td>' + item.PassordByte + '</td>';
         htmlRowTop += '<td>' + item.Telefon + '</td>';
         htmlRowTop += '<td>' + item.Fødselsdato + '</td>';
-        htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.Fornavn + item.Fødselsdato +'" id="update" class="btn btn-primary">Edit</button></td>';
-        htmlRowTop += '<td><button id="deleteBruker" class="btn btn-danger" onclick="deletebruker('+item.Telefon+')">Delete</button></td>';
 
-        htmlRowTop += [
-            '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">' +
-            '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>' +
-            //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>' +
-            '<div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Epost + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Etternavn + '</div><br><div contenteditable="true"style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Adresse + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px;border-style: solid;">' + item.Telefon + '</div>' +
-            //'<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
-            '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Epost + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
-            '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditBruker(this)">Save changes</button>         </div>   </div>   </div></div>'
-        ];
+        htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.Navn + '" id="update" class="btn btn-primary">Edit</button></td>';
+        htmlRowTop += '<td><button id="delete" class="btn btn-danger" onclick="deletebruker(' + item.Telefon + ')">Delete</button></td></tr>';
+
+        htmlRowTop += '<div class="modal fade" id="' + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">';
+        htmlRowTop += '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>';
+
+        htmlRowTop += '<div class="modal-body">';
+
+        htmlRowTop += '<span style="font-size: 20px">Epost</span><br/>';
+        htmlRowTop += '<input type="text" id="orderDato" value="' + item.Epost + '"><br/>';
+        htmlRowTop += '<span style="font-size: 20px">Fornavn</span><br/>';
+        htmlRowTop += '<input type="text" id="orderDato" value="' + item.Fornavn + '"><br/>';
+        htmlRowTop += '<span style="font-size: 20px">Etternavn</span><br/>';
+        htmlRowTop += '<input type="text" id="orderDato" value="' + item.Etternavn + '"><br/>';
+        htmlRowTop += '<span style="font-size: 20px">Adresse</span><br/>';
+        htmlRowTop += '<input type="text" id="orderDato" value="' + item.Adresse + '"><br/>';
+        htmlRowTop += '<span style="font-size: 20px">Telefon</span><br/>';
+        htmlRowTop += '<input type="text" id="orderDato" value="' + item.Telefon + '"><br/>';
+        htmlRowTop += '<span style="font-size: 20px">Fødselsdato</span><br/>';
+        htmlRowTop += '<input type="text" id="orderDato" value="' + item.Fødselsdato + '"><br/>';
+
+
+        htmlRowTop += '</div >';
+        htmlRowTop += '<div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+        htmlRowTop += '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditBruker(this)">Save changes</button>         </div>   </div>   </div></div>';
+
 
     });
     htmlRowTop += '</tbody></table>';
