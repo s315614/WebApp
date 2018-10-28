@@ -29,8 +29,8 @@ namespace Gruppeoppgave1.Models
             byte[] passordAdmin = lagHash("123456");
             var nyAdmin = new Adminer()
             {
-               
-                Navn = "Tommy Hilfigure",
+              
+                Navn = "admin",
                 Passord = passordAdmin
             };
 

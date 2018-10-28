@@ -132,7 +132,7 @@
 
             htmlRowTop += '<td><button id="update">Edit</button></td>';
             htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.OrdrerId + ')">Delete</button></td>';
-            s
+            
 
         });
 

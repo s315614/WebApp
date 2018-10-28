@@ -14,6 +14,7 @@ namespace Gruppeoppgave1
             {
                 List<Admin> alleAdminer = db.Adminer.Select(k => new Admin
                 {
+                    Id = k.Id,
                     Navn = k.Navn,
                     PassordByte = k.Passord,
                     
@@ -30,6 +31,7 @@ namespace Gruppeoppgave1
 
                 List<Admin> hentetAdminer = db.Adminer.Where(k => k.Navn.Contains(Navn)).Select(n => new Admin
                 {
+                    Id = n.Id,
                     Navn = n.Navn,
                     PassordByte = n.Passord    //check if it goes
                     
@@ -89,13 +91,13 @@ namespace Gruppeoppgave1
 
 
 
-        public bool slett(string Navn)
+        public bool slett(int id)
         {
             using (var db = new DBContext())
             {
                 try
                 {
-                    var slettObjekt = db.Adminer.Find(Navn);
+                    var slettObjekt = db.Adminer.Find(id);
                     db.Adminer.Remove(slettObjekt);
                     db.SaveChanges();
                     return true;

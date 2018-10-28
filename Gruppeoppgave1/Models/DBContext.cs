@@ -27,6 +27,7 @@ namespace Gruppeoppgave1.Models
     public class Adminer
     {
         [Key]
+        public int Id { get; set; }
         public string Navn { get; set; }
         public byte[] Passord { get; set; }
     }

@@ -37,10 +37,21 @@
             data: JSON.stringify(jsInn),
             contentType: "application/json;charset=utf-8",
             success: function (ok) {
-                show_data();
                 alert("submit successfully");
                 // kunne ha feilhåndtert evt. feil i registreringen her
-                window.location.reload();
+                $.ajax({
+                    url: '/Home/hentAlleAdminer/',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (Home) {
+                        visTabellAdminer(Home);
+
+                    },
+                    error: function (x, y, z) {
+
+                        alert("Kunne ikke hente Data");
+                    }
+                });
                 // reload av vinduet må sje her altså etter at kallet har returnert
             },
             error: function (x, y, z) {
@@ -65,6 +76,8 @@
         });
     });
 
+    
+
     function visInfoDynamisk(admin) {
         $("#visTabellAdmin").html("");
 
@@ -81,7 +94,7 @@
             htmlRowTop += '<tr>';
             htmlRowTop += '<td>' + item.Navn + '</td>';
             htmlRowTop += '<td><button id="update">Edit</button></td>';
-            htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.Navn + ')">Delete</button></td></tr>';
+            htmlRowTop += '<td><button id="delete" onclick="deleteAdmin(' + item.Id + ')">Delete</button></td></tr>';
 
         });
 
@@ -92,6 +105,41 @@
         
 
 })
+
+function deleteAdmin(id) {
+    
+    var intId = parseInt(id);
+
+
+    
+    $.ajax({
+        url: '/Home/slettAdmin/' + intId,
+        type: 'POST',
+        dataType: 'json',
+        success: function (boolean) {
+            if (boolean) {
+                alert("Orderet er nå slettet!");
+            } else
+                alert("Feil med å slette orderet");
+        },
+        error: function () {
+            $.ajax({
+                url: '/Home/hentAlleAdminer/',
+                type: 'GET',
+                dataType: 'json',
+                success: function (Home) {
+                    visTabellAdminer(Home);
+
+                },
+                error: function (x, y, z) {
+
+                    alert("Kunne ikke hente Data");
+                }
+            });
+        }
+    });
+    
+}
 
 
 function visTabellAdminer(admin) {
@@ -112,10 +160,8 @@ function visTabellAdminer(admin) {
         htmlRowTop += '<tr>';
         htmlRowTop += '<td>' + item.Navn + '</td>';
 
-        // htmlRowTop += '<td>' + item.PassordByte + '</td>';
-
         htmlRowTop += '<td><button id="update">Edit</button></td>';
-        htmlRowTop += '<td><button id="delete" onclick="deleteValue(' + item.Navn + ')">Delete</button></td></tr>';
+        htmlRowTop += '<td><button id="delete" onclick="deleteAdmin(' + item.Id + ')">Delete</button></td></tr>';
 
 
     });

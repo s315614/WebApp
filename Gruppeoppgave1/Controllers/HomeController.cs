@@ -337,7 +337,7 @@ namespace Gruppeoppgave1.Controllers
         } */
 
         [HttpPost]
-        public bool slettAdmin(string id)
+        public bool slettAdmin(int id)
         {
             try
             {
