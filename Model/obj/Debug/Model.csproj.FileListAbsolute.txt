@@ -1,0 +1,5 @@
+C:\Users\Bas\Desktop\WebApp\Model\bin\Debug\Model.dll
+C:\Users\Bas\Desktop\WebApp\Model\bin\Debug\Model.pdb
+C:\Users\Bas\Desktop\WebApp\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Bas\Desktop\WebApp\Model\obj\Debug\Model.dll
+C:\Users\Bas\Desktop\WebApp\Model\obj\Debug\Model.pdb

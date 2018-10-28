@@ -5,8 +5,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
+using Gruppeoppgave1.Model;
+using Gruppeoppgave1.DAL;
 
-namespace Gruppeoppgave1.Models
+namespace Gruppeoppgave1.DAL
 {
     public class DBInit : DropCreateDatabaseAlways<DBContext>
     {
@@ -419,7 +421,6 @@ namespace Gruppeoppgave1.Models
             var basePath = appDomain.BaseDirectory;
 
             Image img = Image.FromFile(Path.Combine(basePath, "Content", "Image", path));
-
             byte[] arr;
             using (MemoryStream ms = new MemoryStream())
             {

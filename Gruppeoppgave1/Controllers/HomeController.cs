@@ -1,12 +1,13 @@
-﻿using Gruppeoppgave1.Models;
+﻿using Gruppeoppgave1.Model;
+using Gruppeoppgave1.BLL;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
-namespace Gruppeoppgave1.Controllers
+
+namespace Gruppeoppgave1.BLL
 {
     public class HomeController : Controller
     {
@@ -23,9 +24,9 @@ namespace Gruppeoppgave1.Controllers
                     return RedirectToAction("MainPage");
                 }
             }
-            
 
-            var db = new DBFilmer();
+
+            var db = new DatabaseLogikk();
             List<Film> alleFilmer = db.alleFilmer();
             return View(alleFilmer);
 
@@ -98,7 +99,7 @@ namespace Gruppeoppgave1.Controllers
         public ActionResult Registry(Bruker innBruker)
         {
             ViewBag.finnesAllerede = false;
-            var db = new DBBruker();
+            var db = new DatabaseLogikk();
             bool OK = db.lagreBruker(innBruker);
             if (OK)
             {
@@ -114,21 +115,21 @@ namespace Gruppeoppgave1.Controllers
 
         public string register(Film innKunde)
         {
-            var db = new DBFilmer();
+            var db = new DatabaseLogikk();
             db.lagreFilm(innKunde);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
         public string addAdmin(Admin innAdmin)
         {
-            var db = new DBAdminer();
+            var db = new DatabaseLogikk();
             db.lagreAdmin(innAdmin);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
         public string registerbruker(Bruker innBruker)
         {
-            var db = new DBBruker();
+            var db = new DatabaseLogikk();
             db.lagreBruker(innBruker);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
@@ -136,21 +137,21 @@ namespace Gruppeoppgave1.Controllers
 
         public string updateAdmin(Admin innAdmin)
         {
-            var db = new DBAdminer();
+            var db = new DatabaseLogikk();
             db.endreAdmin(innAdmin);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
         }
         /*    public string slettBruker(string utBruker)
             {
-                var db = new DBBruker();
+                var db = new DatabaseLogikk();
                 db.slett(utBruker);
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize("OK");
             }*/
         public string registerorder(Order innOrder)
         {
-            var db = new DBOrder();
+            var db = new DatabaseLogikk();
             db.lagreOrdre(innOrder);
             var jsonSerializer = new JavaScriptSerializer();
             return jsonSerializer.Serialize("OK");
@@ -166,7 +167,7 @@ namespace Gruppeoppgave1.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var db = new DBFilmer();
+                    var db = new DatabaseLogikk();
                     List<Film> alleFilmer = db.alleFilmer();
                     ViewBag.message =  epost;
                     return View(alleFilmer);
@@ -186,7 +187,7 @@ namespace Gruppeoppgave1.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var db = new DBOrder();
+                    var db = new DatabaseLogikk();
                     List<Order> alleOrdere = db.hentOrderInnhold(epost);
                     if(alleOrdere == null)
                     {
@@ -209,7 +210,7 @@ namespace Gruppeoppgave1.Controllers
                 if (loggetInn)
                 {
                     string epost = (string)Session["BrukerId"];
-                    var db = new DBFilmer();
+                    var db = new DatabaseLogikk();
                     Film funnetFilm = db.hentFilm(Id);
                     if (funnetFilm == null)
                     {
@@ -251,7 +252,7 @@ namespace Gruppeoppgave1.Controllers
         }*/
        /* public ActionResult DeleteBruker(string id)
         {
-            var brukerDB = new DBBruker();
+            var brukerDB = new DatabaseLogikk();
             Bruker enBruker = brukerDB.hentEnBruker(id);
             return View(enBruker); 
 
@@ -262,7 +263,7 @@ namespace Gruppeoppgave1.Controllers
         {
             try
             {
-                var db = new DBBruker();
+                var db = new DatabaseLogikk();
                 db.editBruker(id);
                 return true;
             }
@@ -274,25 +275,16 @@ namespace Gruppeoppgave1.Controllers
         [HttpPost, ActionName("EditBruker")]
         public ActionResult EditBruker(string id)
         {
-          /*  if (ModelState.IsValid)
-            {
-                var db = new DBContext();
-                db.Entry(id).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("AdminPage");
 
-            }*/
-            
            
-            var db = new DBContext();
-            //Brukere brukerToUpdate = db.Brukere.FirstOrDefault(x=> x.Fornavn.Contains(id));
-            var brukerToUpdate = db.Brukere.Find(id);
+            var db = new DatabaseLogikk();
+
+            var brukerToUpdate = db.hentEnBruker(id);
             if(TryUpdateModel(brukerToUpdate, "",
                 new string[] {"Epost", "Etternavn", "Adresse", "Telefon" }))
             {
                 try
                 {
-                    db.SaveChanges();
                     return RedirectToAction("AdminPage");
                 }
                 catch(Exception feil)
@@ -305,52 +297,30 @@ namespace Gruppeoppgave1.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteBruker(string id)
+        public bool DeleteBruker(string id)
         {
-            //var db = new DBContext();
-       //     Brukere brukerToDelete = new Brukere() { Fornavn = id };
-         //   db.Entry(brukerToDelete).State = EntityState.Deleted;
-           // db.SaveChanges();
             try
             {
-                var db = new DBContext();
-                var brukerToDelete = db.Brukere.Find(id);
-                // Brukere brukerToDelete = new Brukere() { Fornavn = id };
-              //  Brukere brukerToDelete = db.Brukere.Find(id);
-                db.Brukere.Remove(brukerToDelete);
-                db.SaveChanges();
-
-                return RedirectToAction("AdminPage");
+                var db = new DatabaseLogikk();
+                db.slettBruker(id); 
+                return true;
             }
             catch (Exception feil)
             {
-               
-            } 
-            return RedirectToAction("AdminPage");
-            
-
-        }
-      /*  public bool DeleteBruker(int? id)
-        {
-            try
-            {
-                var db = new DBBruker();
-                db.slett(id);
-                return true;
-            }
-            catch(Exception feil)
-            {
                 return false;
             }
-        } */
+
+
+        }
+     
 
         [HttpPost]
         public bool slettAdmin(int id)
         {
             try
             {
-                var db = new DBAdminer();
-                db.slett(id);
+                var db = new DatabaseLogikk();
+                db.slettAdmin(id);
                 return true;
             }
             catch (Exception feil)
@@ -365,7 +335,7 @@ namespace Gruppeoppgave1.Controllers
 
             try
             {
-                var db = new DBOrder();
+                var db = new DatabaseLogikk();
                 db.slettOrder(id);
                 return true;
             }
@@ -382,10 +352,10 @@ namespace Gruppeoppgave1.Controllers
         {
             try
             {
-                var db = new DBBruker();
+                var db = new DatabaseLogikk();
 
 
-                db.slett();
+                db.slettAdmin(id);
                 return true;
             }
             catch (Exception feil)
@@ -400,7 +370,7 @@ namespace Gruppeoppgave1.Controllers
          public ActionResult DeleteBruker(string id, Bruker slett)
  >>>>>>> 54a533f18853c85177f3c12f75966d8a9e6f2cd0
          {
-             var brukerDB = new DBBruker();
+             var brukerDB = new DatabaseLogikk();
              bool slettOK = brukerDB.slett(id);
              if (slettOK)
              {
@@ -427,24 +397,24 @@ namespace Gruppeoppgave1.Controllers
 
             string epost = (string)Session["BrukerId"];
 
-            using (var db = new DBContext())
-            {
-                var order = new Ordrer();
-                var filmer = db.Filmer.FirstOrDefault(b => b.Id == innfilm.Id);
-                var brukere = db.Brukere.FirstOrDefault(b => b.Epost == epost);
+                var db = new DatabaseLogikk();
+            
+                var order = new Order();
+                var filmer = db.hentFilm(innfilm.Id);
+                var brukere = db.hentEnBruker(epost);
 
                 DateTime date = DateTime.Now;
 
                 order.OrdreDate = date.ToString();
-                order.BrukereId = brukere;
-                order.FilmerId = filmer;
+                order.BrukerId = brukere.Epost;
+                order.FilmId = filmer.Id;
 
-                db.Ordrer.Add(order);
+                db.lagreOrdre(order);
 
                 Session["payment"] = false;
-                db.SaveChanges();
+              
 
-            }
+            
        
 
             return RedirectToAction("MainPage");
@@ -467,15 +437,12 @@ namespace Gruppeoppgave1.Controllers
         }
         private static bool Admin_i_DB(Bruker innBruker)
         {
-            using (var db = new DBContext())
-            {
-                byte[] passord = lagHash(innBruker.Passord);
+      
+                var db = new DatabaseLogikk();
+                var check = db.hentAdminInnholdPassordBrukernavn(innBruker);
+                
 
-
-                Adminer funnetAdmin = db.Adminer.FirstOrDefault(b => b.Navn == innBruker.Epost && b.Passord == passord);
-
-
-                if (funnetAdmin == null)
+                if(check == null)
                 {
                     return false;
                 }
@@ -483,34 +450,30 @@ namespace Gruppeoppgave1.Controllers
                 {
                     return true;
                 }
-            }
+            
 
         }
 
         private static bool Bruker_i_DB(Bruker innBruker)
         {
-            using (var db = new DBContext())
+            var db = new DatabaseLogikk();
+            var check = db.bruker_i_db(innBruker);
+
+
+            if (check == null)
             {
-                byte[] passord = lagHash(innBruker.Passord);
-                Brukere funnetBruker = db.Brukere.FirstOrDefault
-                    (b => b.Epost == innBruker.Epost && b.Passord == passord);
-
-
-                if (funnetBruker == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return false;
+            }
+            else
+            {
+                return true;
             }
 
         }
 
         public string hentFilmInneholder(string id)
         {
-            var db = new DBFilmer();
+            var db = new DatabaseLogikk();
 
             List<Film> enFilm = db.hentFilmInnhold(id);
 
@@ -531,7 +494,7 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentAdminInneholder(string id)
         {
-            var db = new DBAdminer();
+            var db = new DatabaseLogikk();
             List<Admin> enAdmin = db.hentAdminInnhold(id);
             if(enAdmin== null)
             {
@@ -545,7 +508,7 @@ namespace Gruppeoppgave1.Controllers
 
         public string hentBrukerInneholder(string id)
         {
-            var db = new DBBruker();
+            var db = new DatabaseLogikk();
 
             List<Bruker> enBruker = db.hentBrukerInnhold(id);
 
@@ -566,7 +529,7 @@ namespace Gruppeoppgave1.Controllers
 
         public string hentOrderInneholder(string id)
         {
-            var db = new DBOrder();
+            var db = new DatabaseLogikk();
 
             List<Order> enOrder = db.hentOrderInnhold(id);
 
@@ -587,7 +550,7 @@ namespace Gruppeoppgave1.Controllers
 
         public string hentAlleFilmer()
         {
-            var db = new DBFilmer();
+            var db = new DatabaseLogikk();
             List<Film> alleFilmer = db.alleFilmer();
 
             if (alleFilmer == null) return null;
@@ -600,7 +563,7 @@ namespace Gruppeoppgave1.Controllers
 
         public string hentAlleBrukere()
         {
-            var db = new DBBruker();
+            var db = new DatabaseLogikk();
             List<Bruker> alleBrukere = db.alleBrukere();
 
             if (alleBrukere == null) return null;
@@ -612,7 +575,7 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentAlleAdminer()
         {
-            var db = new DBAdminer();
+            var db = new DatabaseLogikk();
             List<Admin> alleAdminer = db.alleAdminer();
 
             if (alleAdminer == null) return null;
@@ -624,7 +587,7 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentAlleOrdre()
         {
-            var db = new DBOrder();
+            var db = new DatabaseLogikk();
             List<Order> alleOrdre = db.alleOrdre();
 
             if (alleOrdre == null) return null;
@@ -645,12 +608,12 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentAlleFilmNavn()
         {
-            var db = new DBFilmer();
+            var db = new DatabaseLogikk();
             List<Film> alleFilmer = db.alleFilmer();
-            var alleNavn = new List<jsFilm>();
+            var alleNavn = new List<Film>();
             foreach (Film k in alleFilmer)
             {
-                var ettNavn = new jsFilm();
+                var ettNavn = new Film();
                 ettNavn.Id = k.Id;
                 ettNavn.Navn = k.Navn;
 
@@ -662,12 +625,12 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentAlleNavn()
         {
-            var db = new DBKategori();
+            var db = new DatabaseLogikk();
             List<Katagori> alleKategorier = db.AlleKategorier();
-            var alleNavn = new List<jsKategor>();
+            var alleNavn = new List<Katagori>();
             foreach (Katagori k in alleKategorier)
             {
-                var ettNavn = new jsKategor();
+                var ettNavn = new Katagori();
                 ettNavn.KategoriId = k.KategoriId;
                 ettNavn.KatgoriNavn = k.KatgoriNavn;
 
@@ -679,7 +642,7 @@ namespace Gruppeoppgave1.Controllers
         }
         public string hentKatinfo(int id)
         {
-            var db = new DBFilmer();
+            var db = new DatabaseLogikk();
             List<Film> alleFilmerKategori = db.hentFilmKategori(id);
 
             if (alleFilmerKategori == null)

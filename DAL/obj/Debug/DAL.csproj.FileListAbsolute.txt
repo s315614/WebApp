@@ -1,0 +1,13 @@
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\DAL.dll.config
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\DAL.dll
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\DAL.pdb
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\Model.dll
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\Model.pdb
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Bas\Desktop\WebApp\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bas\Desktop\WebApp\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Bas\Desktop\WebApp\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Bas\Desktop\WebApp\DAL\obj\Debug\DAL.dll
+C:\Users\Bas\Desktop\WebApp\DAL\obj\Debug\DAL.pdb

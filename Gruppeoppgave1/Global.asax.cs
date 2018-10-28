@@ -1,4 +1,4 @@
-﻿using Gruppeoppgave1.Models;
+﻿using Gruppeoppgave1.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,11 +19,5 @@ namespace Gruppeoppgave1
             Database.SetInitializer(new DBInit());
         }
 
-        protected void Application_BeginRequest()
-        {
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
-            Response.Cache.SetNoStore();
-        }
     }
 }

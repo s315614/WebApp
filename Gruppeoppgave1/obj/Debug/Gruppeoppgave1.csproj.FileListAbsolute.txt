@@ -581,3 +581,5 @@ C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.d
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.pdb
 C:\Users\Kibre\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojAssemblyReference.cache
 C:\Users\Bas\Documents\GitHub\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojResolveAssemblyReference.cache
+C:\Users\Bas\Desktop\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csprojResolveAssemblyReference.cache
+C:\Users\Bas\Desktop\WebApp\Gruppeoppgave1\obj\Debug\Gruppeoppgave1.csproj.CoreCompileInputs.cache
