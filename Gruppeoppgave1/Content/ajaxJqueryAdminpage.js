@@ -105,12 +105,12 @@
             htmlRowTop += '</tr>';
 
             htmlRowTop += [
-                '<div class="modal fade" id="' + item.Id + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
-                '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
+                '<div class="modal fade" id="' + item.Id + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">' +
+                '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>' +
                 //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-                '<div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Navn + '</div><br><div contenteditable="true" style="height:150px; width:400px; border-style: solid;">' + item.Beskrivelse + '</div><br><div contenteditable="true"style="height:30px; width:400px; border-style: solid;">' + item.Pris + '</div><br><div contenteditable="true" style="height:30px; width:400px;border-style: solid;">' + item.KategoriNavn + '</div>',
-                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
-                '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Id + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>' +
+                '<div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Navn + '</div><br><div contenteditable="true" style="margin:10px; height:150px; width:400px; border-style: solid;">' + item.Beskrivelse + '</div><br><div contenteditable="true"style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Pris + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px;border-style: solid;">' + item.KategoriNavn + '</div>' +
+                '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Id + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
                 '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditFilm(' + item.Id + ')">Save changes</button>         </div>   </div>   </div></div>'
             ];
 
@@ -149,12 +149,12 @@
                htmlRowTop += '</tr>';
 
                htmlRowTop += [
-                   '<div class="modal fade" id="' + item.Id + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
-                   '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
+                   '<div class="modal fade" id="' + item.Id + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">'+
+                   '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>'+
                    //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-                   '<div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Navn + '</div><br><div contenteditable="true" style="height:150px; width:400px; border-style: solid;">' + item.Beskrivelse + '</div><br><div contenteditable="true"style="height:30px; width:400px; border-style: solid;">' + item.Pris + '</div><br><div contenteditable="true" style="height:30px; width:400px;border-style: solid;">' + item.KategoriNavn + '</div>',
-                   '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
-                   '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Id + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+                   '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>'+
+                   '<div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Navn + '</div><br><div contenteditable="true" style="margin:10px; height:150px; width:400px; border-style: solid;">' + item.Beskrivelse + '</div><br><div contenteditable="true"style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Pris + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px;border-style: solid;">' + item.KategoriNavn + '</div>'+
+                   '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Id + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
                    '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditFilm(' + item.Id + ')">Save changes</button>         </div>   </div>   </div></div>'
                ];
 

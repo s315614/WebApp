@@ -523,6 +523,19 @@ namespace Gruppeoppgave1.Controllers
             string json = jsonSerializer.Serialize(enFilm);
             return json;
         }
+        public string hentAdminInneholder(string id)
+        {
+            var db = new DBAdminer();
+            List<Admin> enAdmin = db.hentAdminInnhold(id);
+            if(enAdmin== null)
+            {
+                return null;
+            }
+            var jsonSerializer = new JavaScriptSerializer();
+            jsonSerializer.MaxJsonLength = Int32.MaxValue;
+            string json = jsonSerializer.Serialize(enAdmin);
+            return json;
+        }
 
         public string hentBrukerInneholder(string id)
         {

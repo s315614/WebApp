@@ -24,12 +24,12 @@ namespace Gruppeoppgave1
                 return alleAdminer;
             }
         }
-        public List<Admin> hentAdminInnhold(string Navn)
+        public List<Admin> hentAdminInnhold(string id)
         {
             using (var db = new DBContext())
             {
 
-                List<Admin> hentetAdminer = db.Adminer.Where(k => k.Navn.Contains(Navn)).Select(n => new Admin
+                List<Admin> hentetAdminer = db.Adminer.Where(k => k.Navn.Contains(id)).Select(n => new Admin
                 {
                     Id = n.Id,
                     Navn = n.Navn,

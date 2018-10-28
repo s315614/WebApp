@@ -107,12 +107,13 @@
             htmlRowTop += '<td><button id="deleteBruker" class="btn btn-danger" onclick="deletebruker(' + item.Telefon +')">Delete</button></td>';
 
             htmlRowTop += [
-                '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
-                '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
+                '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">'+
+                '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>'+
                 //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-                '<div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Epost + '</div><br><div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Etternavn + '</div><br><div contenteditable="true"style="height:30px; width:400px; border-style: solid;">' + item.Adresse + '</div><br><div contenteditable="true" style="height:30px; width:400px;border-style: solid;">' + item.Telefon + '</div>',
-                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
-                '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Epost + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>'+
+                '<div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Epost + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Etternavn + '</div><br><div contenteditable="true"style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Adresse + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px;border-style: solid;">' + item.Telefon + '</div>'+
+                //'<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
+                '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Epost + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
                 '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditBruker(this)">Save changes</button>         </div>   </div>   </div></div>'
             ];
 
@@ -201,12 +202,13 @@ function visTabellBrukere(bruker) {
         htmlRowTop += '<td><button id="deleteBruker" class="btn btn-danger" onclick="deletebruker('+item.Telefon+')">Delete</button></td>';
 
         htmlRowTop += [
-            '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
-            '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
+            '<div class="modal fade" id="' + item.Fornavn + item.Fødselsdato + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">' +
+            '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>' +
             //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
-            '<div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Epost + '</div><br><div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Etternavn + '</div><br><div contenteditable="true"style="height:30px; width:400px; border-style: solid;">' + item.Adresse + '</div><br><div contenteditable="true" style="height:30px; width:400px;border-style: solid;">' + item.Telefon + '</div>',
-            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
-            '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Epost + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>' +
+            '<div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Epost + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Etternavn + '</div><br><div contenteditable="true"style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Adresse + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px;border-style: solid;">' + item.Telefon + '</div>' +
+            //'<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
+            '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Epost + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
             '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditBruker(this)">Save changes</button>         </div>   </div>   </div></div>'
         ];
 
