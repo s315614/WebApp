@@ -93,10 +93,19 @@
 
             htmlRowTop += '<tr>';
             htmlRowTop += '<td>' + item.Navn + '</td>';
-            htmlRowTop += '<td><button id="update">Edit</button></td>';
+            htmlRowTop += '<td><button data-toggle="modal" data-target="#' + item.Navn + '" id="update">Edit</button></td>';
             htmlRowTop += '<td><button id="delete" onclick="deleteAdmin(' + item.Id + ')">Delete</button></td></tr>';
 
         });
+        htmlRowTop += [
+            '<div class="modal fade" id="' + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">',
+            '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>',
+            //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
+            '<div contenteditable="true" style="height:30px; width:400px; border-style: solid;">' + item.Navn + '</div>',
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>',
+            '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Id + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>',
+            '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditBruker(this)">Save changes</button>         </div>   </div>   </div></div>'
+        ];
 
         htmlRowTop += '</tbody></table>';
 
