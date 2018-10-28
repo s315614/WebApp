@@ -1,1 +1,2 @@
 C:\Users\irfan\IdeaProjects\WebApp\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\irfan\IdeaProjects\WebApp\BLL\obj\Debug\BLL.csprojAssemblyReference.cache

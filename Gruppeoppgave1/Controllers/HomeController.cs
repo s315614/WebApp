@@ -62,7 +62,7 @@ namespace Gruppeoppgave1.Controllers
 
         }
 
-
+        /**
         [HttpPost]
         public ActionResult Login(Bruker innBruker)
         {
@@ -84,7 +84,7 @@ namespace Gruppeoppgave1.Controllers
             return View();
 
         }
-
+            **/
         public ActionResult Registry()
         {
             ViewBag.finnesAllerede = false;
@@ -196,7 +196,7 @@ namespace Gruppeoppgave1.Controllers
 
             return RedirectToAction("Index");
         }
-
+        /**
         [HttpPost]
         public ActionResult Payment(Film innfilm)
         {
@@ -225,7 +225,7 @@ namespace Gruppeoppgave1.Controllers
 
             return RedirectToAction("MainPage");
         }
-
+    **/
         public ActionResult AdminPage()
         {
             return View();
@@ -240,6 +240,7 @@ namespace Gruppeoppgave1.Controllers
 
             return RedirectToAction("Index");
         }
+        /**
         private static bool Admin_i_DB(Bruker innBruker)
         {
             using (var db = new DBContext())
@@ -260,8 +261,9 @@ namespace Gruppeoppgave1.Controllers
                 }
             }
 
-        }
+        } **/
 
+            /**
         private static bool Bruker_i_DB(Bruker innBruker)
         {
             using (var db = new DBContext())
@@ -282,6 +284,7 @@ namespace Gruppeoppgave1.Controllers
             }
 
         }
+    **/
 
         public string hentFilmInneholder(string id)
         {
@@ -385,10 +388,10 @@ namespace Gruppeoppgave1.Controllers
         {
             var db = new KategoriBLL();
             List<Katagori> alleKategorier = db.AlleKategorier();
-            var alleNavn = new List<jsKategor>();
+            var alleNavn = new List<DAL.jsKategor>();
             foreach (Katagori k in alleKategorier)
             {
-                var ettNavn = new jsKategor();
+                var ettNavn = new DAL.jsKategor();
                 ettNavn.KategoriId = k.KategoriId;
                 ettNavn.KatgoriNavn = k.KatgoriNavn;
 
