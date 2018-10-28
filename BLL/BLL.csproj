@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2526538D-F4B3-47E7-924C-A58E9395062E}</ProjectGuid>
+    <ProjectGuid>{2BC8A9E9-9947-4525-A447-94647420710D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BLL</RootNamespace>
     <AssemblyName>BLL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,20 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminerBLL.cs" />
-    <Compile Include="BrukerBLL.cs" />
-    <Compile Include="OrdreBLL.cs" />
-    <Compile Include="KategoriBLL.cs" />
-    <Compile Include="FilmerBLL.cs" />
+    <Compile Include="DatabaseBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{f64d1e09-ce10-499a-a80e-e702cf9ceccd}</Project>
+      <Project>{e416586c-f3dc-4f8a-a25b-caa82b541f05}</Project>
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{f4d2c82a-7add-4036-9b3c-b34727282c21}</Project>
+      <Project>{53ef02b1-f2cb-4106-be78-1e854def76b6}</Project>
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>

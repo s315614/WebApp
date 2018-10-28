@@ -1,85 +1,124 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "AdminPage";
 }
-
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Content/ajaxJqueryAdminpage.js"></script>
-<script src="~/Content/AdminBruker.js"></script> 
-<script src="~/Content/AdminOrdre.js"></script>
-<script src="~/Content/Admin.js"></script>
-<style>
-    input[id=searchBox] {
-        width: 75px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-        background-color: white;
-        background-position: 10px 10px;
-        background-repeat: no-repeat;
-       // padding: 12px 20px 12px 40px;
-        -webkit-transition: width 0.4s ease-in-out;
-        transition: width 0.4s ease-in-out;
-    }
-
-        input[id=searchBox]:focus {
-           width: 100%;
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Content/ajaxJqueryAdminpage.js"></script>
+    <script src="~/Content/AdminBruker.js"></script>
+    <script src="~/Content/AdminOrdre.js"></script>
+    <script src="~/Content/Admin.js"></script>
+   
+    <style>
+        input[id=searchBox] {
+            width: 75px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            // padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
         }
-</style>
 
-<div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black; font-size:18px">
-    <div class="container">
-        <div class="navbar-header">
-            <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="~/Home/MainPage" class="navbar-brand brand"><i class="fa fa-codepen"></i><img src="~/Content/Image/Logo.png" alt="Logo" style="width:100px;height:30px;"></a>
+            input[id=searchBox]:focus {
+                width: 100%;
+            }
+
+        input[id=searchBox1] {
+            width: 75px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            // padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+            input[id=searchBox1]:focus {
+                width: 100%;
+            }
+
+        input[id=searchBox2] {
+            width: 75px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            // padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+            input[id=searchBox2]:focus {
+                width: 100%;
+            }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black; font-size:18px">
+        <div class="container">
+            <div class="navbar-header">
+                <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Home/MainPage" class="navbar-brand brand"><i class="fa fa-codepen"></i><img src="~/Content/Image/Logo.png" alt="Logo" style="width:100px;height:30px;"></a>
+            </div>
+            <div id="navbar-collapse-02" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li> <input id="searchBox" style="margin-top:10px;" type="text" placeholder="Search.."></li> -->
+                    <!-- <li> <a href="@Url.Action("ListProfile", "Home")">Welcome @ViewBag.message</a></li> -->
+                    <li> @Html.ActionLink("Admin Logout", "Loggut", "Home")</li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
         </div>
-        <div id="navbar-collapse-02" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav"></ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!-- <li> <input id="searchBox" style="margin-top:10px;" type="text" placeholder="Search.."></li> -->
-                <!-- <li> <a href="@Url.Action("ListProfile", "Home")">Welcome @ViewBag.message</a></li> -->
-                <li> @Html.ActionLink("Admin Logout", "Loggut", "Home")</li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div>
-</div>
-
-<!--
-<div class="container" style="float:left">
-    <div id="buttons">
-        <button id="visfilmtabell">Filmer</button>
-        <button>Brukere</button>
-        <button>Administratorer</button>
     </div>
 
-    <div id="visTabell">
+    <!--
+    <div class="container" style="float:left">
+        <div id="buttons">
+            <button id="visfilmtabell">Filmer</button>
+            <button>Brukere</button>
+            <button>Administratorer</button>
+        </div>
+
+        <div id="visTabell">
+
+        </div>
 
     </div>
+        -->
 
-</div>
-    -->
+    <ul class="nav nav-tabs" style="padding-top: 20px;">
+        <li><a id="visfilmtabell" data-toggle="tab" href="#home" style="color: #fff; background-color: #1E88E5; width: 150px;">Filmer</a></li>
+        <li><a id="visbrukertabell" data-toggle="tab" href="#menu1" style="color: #fff; background-color: #673ab7; width: 150px;">Brukere</a></li>
+        <li><a id="visordretabell" data-toggle="tab" href="#menu2" style="color: #fff; background-color: #ff9800; width: 150px;">Ordre</a></li>
+        <li><a id="visadmintabell" data-toggle="tab" href="#menu3" style="color: #fff; background-color: #00bcd4; width: 150px;">Admin</a></li>
+    </ul>
 
-<ul class="nav nav-tabs" style="padding-top: 20px;">
-    <li><a id="visfilmtabell" data-toggle="tab" href="#home" style="color: #fff; background-color: #1E88E5; width: 150px;">Filmer</a></li>
-    <li><a id="visbrukertabell" data-toggle="tab" href="#menu1" style="color: #fff; background-color: #673ab7; width: 150px;">Brukere</a></li>
-    <li><a id="visordretabell" data-toggle="tab" href="#menu2" style="color: #fff; background-color: #ff9800; width: 150px;">Ordre</a></li>
-    <li><a id="visadmintabell" data-toggle="tab" href="#menu3" style="color: #fff; background-color: #00bcd4; width: 150px;">Admin</a></li>
-</ul>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade">
+            <div>
 
-<div class="tab-content">
-    <div id="home" class="tab-pane fade">
-        <div>
-            
                 <table>
                     <tr>
                         <td><input id="searchBox" type="text" name="search" placeholder="Search.."></td>
-                        <form action="">
+  
                             <td><input id="navn" type="text" name="Navn" placeholder="Navn"></td>
                             <td><input id="beskrivelse" type="text" name="Beskrivelse" placeholder="Beskrivelse"></td>
                             <td><input id="pris" type="text" name="Pris" placeholder="Pris"></td>
@@ -87,21 +126,21 @@
                             <!--<td><input id="bilde" type="file" name="pic" placeholder="Bilde" accept="image/*"></td>-->
                             <td><input id="fileInput" type="file" style="width:150px; height:100%" name="pic" placeholder="Bilde" accept="image/*"></td>
                             <td><button id="registrer" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
-                        </form>
+        
                     </tr>
                 </table>
 
-           
+
+            </div>
+            <div id="visTabell"></div>
         </div>
-        <div id="visTabell"></div>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-        <div>
-            
+        <div id="menu1" class="tab-pane fade">
+            <div>
+
                 <table>
                     <tr>
                         <td><input id="searchBox1" type="text" name="søk.." placeholder="Search.."></td>
-                        <form action="">
+
                             <td><input id="epost" style="width:130px;" type="text" name="Epost" placeholder="Epost"></td>
                             <td><input id="fornavn" style="width:130px;" type="text" name="Fornavn" placeholder="Fornavn"></td>
                             <td><input id="etternavn" style="width:130px;" type="text" name="Etternavn" placeholder="Etternavn"></td>
@@ -110,19 +149,42 @@
                             <td><input id="telefon" style="width:130px;" type="number" name="Telefon" placeholder="Telefon"></td>
                             <td><input id="fødselsdato" style="width:130px;" type="date" name="Fødselsdato" placeholder="Fødselsdato"></td>
                             <td><button id="add" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
-                        </form>
+
                     </tr>
                 </table>
 
-           
+            </div>
+            <div id="visTabellBruker"></div>
         </div>
-        <div id="visTabellBruker"></div>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-        <div id="visTabellOrdrer"></div>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-        <div id="visTabellAdmin"></div>
-    </div>
-</div>
+        <div id="menu2" class="tab-pane fade">
+            <table>
+                <tr>
+                    <td><input id="searchBox3" type="text" name="søk.." placeholder="Search.."></td>
+                    <!--<form action=""> -->
+                    <td><input id="ordredate" style="width:130px;" type="date" name="OrdreDate" placeholder="Dato"></td>
+                    <td><input id="brukerid" style="width:130px;" type="text" name="BrukerId" placeholder="Epost"></td>
+                    <!--   <td><input id="filmid" style="width:130px;" type="number" name="FilmId" placeholder="Film id"></td>  -->
+                    <td><div id="dropDown"><select id="drop" style="width: 130px;"></select></div></td>
+                    <td><button id="added" class="btn btn-success" style="width:75px;">Add</button></td>
+                    <!-- </form> -->
+                </tr>
+            </table>
+            <div id="visTabellOrdrer"></div>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <table>
+                <tr>
+                    <td><input id="searchBox2" type="text" name="søk.." placeholder="Search.."></td>
 
+                        <td><input id="adminNavn" style="width:130px;" type="text" name="AdminNavn" placeholder="Navn"></td>
+                        <td><input id="adminPassord" style="width:130px;" type="text" name="AdminPassord" placeholder="Passord"></td>
+                        <td><button id="insert" class="btn btn-success" type="submit" style="width:75px;">Add</button></td>
+
+                </tr>
+            </table>
+            <div id="visTabellAdmin"></div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -87,7 +87,7 @@
 
         htmlRowTop += '<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
         htmlRowTop += '<tr><th scope="col">FilmId</th><th scope="col">Navn</th><th scope="col">Beskrivelse</th>';
-        htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th><th scope="col"></th>';
+        htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th>';
         htmlRowTop += '</tr></thead><tbody>';
 
 
@@ -100,9 +100,19 @@
             htmlRowTop += '<td>' + item.Beskrivelse + '</td>';
             htmlRowTop += '<td>' + item.Pris + '</td>';
             htmlRowTop += '<td>' + item.KategoriNavn + '</td>';
-            htmlRowTop += '<td><button id="update" class="btn btn-primary">Edit</button></td>';
-            htmlRowTop += '<td><button id="update" class="btn btn-danger">Delete</button></td>';
+            htmlRowTop += '<td><button id="update" class="btn btn-primary" data-toggle="modal" data-target="#' + item.Id + item.Navn + '">Edit</button></td>';
+            
             htmlRowTop += '</tr>';
+
+            htmlRowTop += [
+                '<div class="modal fade" id="' + item.Id + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">' +
+                '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>' +
+                //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
+                '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>' +
+                '<div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Navn + '</div><br><div contenteditable="true" style="margin:10px; height:150px; width:400px; border-style: solid;">' + item.Beskrivelse + '</div><br><div contenteditable="true"style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Pris + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px;border-style: solid;">' + item.KategoriNavn + '</div>' +
+                '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Id + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+                '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditFilm(' + item.Id + ')">Save changes</button>         </div>   </div>   </div></div>'
+            ];
 
         });
 
@@ -122,7 +132,7 @@
                
         htmlRowTop +='<table class="table table-striped table-bordered table-hover"><thead class="thead-dark">';
         htmlRowTop += '<tr><th scope="col">FilmId</th><th scope="col">Navn</th><th scope="col">Beskrivelse</th>';
-        htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th><th scope="col"></th>';
+        htmlRowTop += '<th scope="col">Pris</th><th scope="col">Kategori</th><th scope="col"></th>';
         htmlRowTop += '</tr></thead><tbody>';
         
 
@@ -135,9 +145,18 @@
                htmlRowTop += '<td>' + item.Beskrivelse + '</td>';
                htmlRowTop += '<td>' + item.Pris + '</td>';
                htmlRowTop += '<td>' + item.KategoriNavn + '</td>';
-               htmlRowTop += '<td><button id="update" class="btn btn-primary">Edit</button></td>';
-               htmlRowTop += '<td><button id="update" class="btn btn-danger">Delete</button></td>';
+               htmlRowTop += '<td><button id="update" class="btn btn-primary" data-toggle="modal" data-target="#' + item.Id + item.Navn + '">Edit</button></td>';
                htmlRowTop += '</tr>';
+
+               htmlRowTop += [
+                   '<div class="modal fade" id="' + item.Id + item.Navn + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document">'+
+                   '<div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="exampleModalLabel">' + "Oppdater" + '</h3>'+
+                   //'<form><input type="text" placeholder="'+item.Epost+'"></input></form>',
+                   '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>'+
+                   '<div contenteditable="true" style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Navn + '</div><br><div contenteditable="true" style="margin:10px; height:150px; width:400px; border-style: solid;">' + item.Beskrivelse + '</div><br><div contenteditable="true"style="margin:10px; height:30px; width:400px; border-style: solid;">' + item.Pris + '</div><br><div contenteditable="true" style="margin:10px; height:30px; width:400px;border-style: solid;">' + item.KategoriNavn + '</div>'+
+                   '<div class="modal-body"></div> <div class="modal-footer"><h1>' + "Lag Form her" + '</h1>  <h3>' + item.Id + '</h3><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
+                   '<button  id="EditBruker" type="button" class="btn btn-primary" onclick="EditFilm(' + item.Id + ')">Save changes</button>         </div>   </div>   </div></div>'
+               ];
 
                });
 

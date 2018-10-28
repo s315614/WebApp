@@ -5,6 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
+using Gruppeoppgave1.Model;
+
 
 namespace Gruppeoppgave1.DAL
 {
@@ -25,11 +27,12 @@ namespace Gruppeoppgave1.DAL
                 Telefon = "95234352",
                 Passord = passord
             };
+
             byte[] passordAdmin = lagHash("123456");
             var nyAdmin = new Adminer()
             {
-               
-                Navn = "Tommy Hilfigure",
+              
+                Navn = "admin",
                 Passord = passordAdmin
             };
 
@@ -418,7 +421,6 @@ namespace Gruppeoppgave1.DAL
             var basePath = appDomain.BaseDirectory;
 
             Image img = Image.FromFile(Path.Combine(basePath, "Content", "Image", path));
-
             byte[] arr;
             using (MemoryStream ms = new MemoryStream())
             {

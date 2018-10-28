@@ -1,4 +1,4 @@
-﻿using Gruppeoppgave1.Models;
+﻿using Gruppeoppgave1.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

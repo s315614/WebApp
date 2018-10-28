@@ -9,6 +9,7 @@ namespace Gruppeoppgave1.Model
     public class Admin
     {
         [Key]
+        public int Id { get; set; }
         [RegularExpression(@"[A-Za-zøæåØÆÅ]{2,50}",
         ErrorMessage = "Ugyldig Navn")]
         [Required(ErrorMessage = "Fornavn må oppgis")]

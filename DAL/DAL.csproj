@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F64D1E09-CE10-499A-A80E-E702CF9CECCD}</ProjectGuid>
+    <ProjectGuid>{E416586C-F3DC-4F8A-A25B-CAA82B541F05}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAL</RootNamespace>
     <AssemblyName>DAL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,12 +54,12 @@
     <Compile Include="DBInit.cs" />
     <Compile Include="FilmerDAL.cs" />
     <Compile Include="KategoriDAL.cs" />
-    <Compile Include="OrdreDAL.cs" />
+    <Compile Include="OrderDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{f4d2c82a-7add-4036-9b3c-b34727282c21}</Project>
+      <Project>{53ef02b1-f2cb-4106-be78-1e854def76b6}</Project>
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>

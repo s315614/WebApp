@@ -23,6 +23,14 @@ namespace Gruppeoppgave1.DAL
         public virtual List<Ordrer> Ordrer { get; set; }
     }
 
+    public class Adminer
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Navn { get; set; }
+        public byte[] Passord { get; set; }
+    }
+
     public class Filmer
     {
         [Key]
@@ -48,6 +56,11 @@ namespace Gruppeoppgave1.DAL
 
 
     }
+    public class jsFilm
+    {
+        public int Id { get; set; }
+        public string Navn { get; set; }
+    }
 
     public class jsKategor
     {
@@ -61,20 +74,14 @@ namespace Gruppeoppgave1.DAL
 
         public string OrdreDate { get; set; }
 
-        public Brukere BrukereId { get; set; }
+        public virtual Brukere BrukereId { get; set; }
 
-        public Filmer FilmerId { get; set; }
+        public virtual Filmer FilmerId { get; set; }
 
 
     }
 
-    public class Adminer
-    {
-        [Key]
-        public string Navn { get; set; }
-        public byte[] Passord { get; set; }
-    }
-
+    
     public class DBContext : DbContext
     {
         public DBContext() :

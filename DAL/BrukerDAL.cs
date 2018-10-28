@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity.Infrastructure;
 
 namespace Gruppeoppgave1.DAL
 {
@@ -28,12 +29,12 @@ namespace Gruppeoppgave1.DAL
                 return alleBrukere;
             }
         }
-        public List<Bruker> hentBrukerInnhold(string Epost)
+        public List<Bruker> hentBrukerInnhold(string id)
         {
             using (var db = new DBContext())
             {
 
-                List<Bruker> hentetBrukere = db.Brukere.Where(k => k.Fornavn.Contains(Epost)).Select(n => new Bruker
+                List<Bruker> hentetBrukere = db.Brukere.Where(k => k.Fornavn.Contains(id)).Select(n => new Bruker
                 {
                     Epost = n.Epost,
                     Fornavn = n.Fornavn,
@@ -52,6 +53,39 @@ namespace Gruppeoppgave1.DAL
                 return hentetBrukere;
             }
         }
+
+        public Bruker finnBrukerMedTelefon(int telefon)
+        {
+            var telefonString = telefon.ToString();
+            using (var db = new DBContext())
+            {
+                Brukere hentetbruker = db.Brukere.FirstOrDefault(k => k.Telefon == telefonString);
+
+                if (hentetbruker == null)
+                {
+                    return null;
+                }
+
+                var bruker = new Bruker()
+                {
+                    Epost = hentetbruker.Epost,
+                    Fornavn = hentetbruker.Fornavn,
+                    Etternavn = hentetbruker.Etternavn,
+                    Adresse = hentetbruker.Adresse,
+                    PassordByte = hentetbruker.Passord,
+                    Telefon = hentetbruker.Telefon,
+                    Fødselsdato = hentetbruker.Fødselsdato
+                };
+              
+
+                return bruker;
+
+
+
+            };
+
+        }
+
         public bool lagreBruker(Bruker innBruker)
         {
 
@@ -82,14 +116,17 @@ namespace Gruppeoppgave1.DAL
                 }
             }
         }
-
-        public bool slett(string epost)
+          
+      
+        public bool slettBruker(string id)
         {
             using (var db = new DBContext())
             {
                 try
                 {
-                    var slettObjekt = db.Brukere.Find(epost);
+                    var slettObjekt = db.Brukere.Find(id);
+      
+
                     db.Brukere.Remove(slettObjekt);
                     db.SaveChanges();
                     return true;
@@ -101,6 +138,54 @@ namespace Gruppeoppgave1.DAL
             }
         }
 
+
+        public bool bruker_i_db(Bruker innBruker)
+        {
+            using (var db = new DBContext())
+            {
+                byte[] passord = lagHash(innBruker.Passord);
+                Brukere funnetBruker = db.Brukere.FirstOrDefault
+                    (b => b.Epost == innBruker.Epost && b.Passord == passord);
+
+
+                if (funnetBruker == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+      
+        public Bruker hentEnBruker(string id)
+        {
+            var db = new DBContext();
+
+            var enBrukerDB = db.Brukere.Find(id);
+
+            if (enBrukerDB == null)
+            {
+                return null;
+            }
+            else
+            {
+                var utBruker = new Bruker()
+                {
+                    Epost = enBrukerDB.Epost,
+                    Fornavn = enBrukerDB.Fornavn,
+                    Etternavn = enBrukerDB.Etternavn,
+                    Adresse = enBrukerDB.Adresse,
+                    PassordByte = enBrukerDB.Passord,
+                    Telefon = enBrukerDB.Telefon,
+                    Fødselsdato = enBrukerDB.Fødselsdato
+                };
+                return utBruker;
+            }
+        }
+
+
         private static byte[] lagHash(string innPassord)
         {
             byte[] innData, utData;
@@ -110,6 +195,10 @@ namespace Gruppeoppgave1.DAL
             return utData;
         }
 
+
+
+
     }
+
 
 }

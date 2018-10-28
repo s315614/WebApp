@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity.Infrastructure;
 
 namespace Gruppeoppgave1.DAL
 {
@@ -105,6 +106,34 @@ namespace Gruppeoppgave1.DAL
             }
         }
 
+        public Film hentFilm(string id)
+        {
+            using (var db = new DBContext())
+            {
+                Filmer enFilm = db.Filmer.FirstOrDefault(k => k.Navn == id);
+                //Filmer enFilm = db.Filmer.Find(id);
+
+
+                if (enFilm == null)
+                {
+                    return null;
+                }
+                var hentetFilm = new Film()
+                {
+                    Navn = enFilm.Navn,
+                    Beskrivelse = enFilm.Beskrivelse,
+                    Bilde = enFilm.Bilde,
+
+                    Id = enFilm.Id,
+                    KategoriNavn = enFilm.Kategorier.KatgoriNavn,
+                    Pris = enFilm.Pris
+
+                };
+
+                return hentetFilm;
+            }
+        }
+
         public List<Film> hentFilmInnhold(string id)
         {
             using (var db = new DBContext())
@@ -155,7 +184,7 @@ namespace Gruppeoppgave1.DAL
 
 
 
-        public bool slett(int id)
+        public bool slettFilmer(int id)
         {
             using (var db = new DBContext())
             {
