@@ -100,9 +100,7 @@
         });
     });
 
-    function test() {
-        alert("yes!");
-    }
+    
 
    
 
@@ -237,7 +235,9 @@ function visTabellOrdre(order) {
 
     $("#visTabellOrdrer").append(htmlRowTop);
 }
-
+function test() {
+    alert("yes!");
+}
 
 
 

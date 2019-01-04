@@ -24,3 +24,17 @@ C:\Users\Bas\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.csprojResolveAssemblyRefe
 C:\Users\Bas\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\Bas\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.dll
 C:\Users\Bas\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.pdb
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\DAL.dll.config
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\DAL.dll
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\DAL.pdb
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\Model.dll
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\Model.pdb
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.dll
+C:\Users\Kibre\Documents\GitHub\WebApp\DAL\obj\Debug\DAL.pdb

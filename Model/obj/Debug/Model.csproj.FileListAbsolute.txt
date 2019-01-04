@@ -8,3 +8,9 @@ C:\Users\Bas\Documents\GitHub\WebApp\Model\bin\Debug\Model.pdb
 C:\Users\Bas\Documents\GitHub\WebApp\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 C:\Users\Bas\Documents\GitHub\WebApp\Model\obj\Debug\Model.dll
 C:\Users\Bas\Documents\GitHub\WebApp\Model\obj\Debug\Model.pdb
+C:\Users\Kibre\Documents\GitHub\WebApp\Model\bin\Debug\Model.dll
+C:\Users\Kibre\Documents\GitHub\WebApp\Model\bin\Debug\Model.pdb
+C:\Users\Kibre\Documents\GitHub\WebApp\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Kibre\Documents\GitHub\WebApp\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Kibre\Documents\GitHub\WebApp\Model\obj\Debug\Model.dll
+C:\Users\Kibre\Documents\GitHub\WebApp\Model\obj\Debug\Model.pdb
